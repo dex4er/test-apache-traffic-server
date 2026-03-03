@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: podinfo
+
+resources:
+- helmrepository.yaml
+- helmrelease.yaml
+
+configMapGenerator:
+- name: helm-values-podinfo
+  files:
+  - values.yaml
+
+configurations:
+- configuration.yaml

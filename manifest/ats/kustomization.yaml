@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: ats
+resources:
+- deployment.yaml
+- service.yaml
+configMapGenerator:
+- name: ats-config
+  files:
+  - files/header_rewrite.config
+  - files/records.yaml
+  - files/plugin.config
+  - files/remap.config
+  - files/storage.config

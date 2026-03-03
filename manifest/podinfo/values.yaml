@@ -1,0 +1,5 @@
+## https://github.com/stefanprodan/podinfo/blob/master/charts/podinfo/values.yaml
+
+logLevel: debug
+
+replicaCount: 2

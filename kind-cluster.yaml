@@ -1,0 +1,12 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: test-ats
+nodes:
+- role: control-plane
+  image: kindest/node:v1.35.0
+  extraPortMappings:
+  - containerPort: 31080
+    hostPort: 31080
+networking:
+  kubeProxyMode: nftables
+  apiServerAddress: 0.0.0.0

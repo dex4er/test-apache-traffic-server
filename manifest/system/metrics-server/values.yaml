@@ -1,0 +1,12 @@
+## https://github.com/kubernetes-sigs/metrics-server/blob/master/charts/metrics-server/values.yaml
+
+args:
+- --kubelet-insecure-tls
+
+resources:
+  requests:
+    cpu: "0"
+    memory: "0"
+  limits:
+    cpu: "1"
+    memory: 128Mi

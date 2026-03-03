@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-traffic-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ats
+  template:
+    metadata:
+      labels:
+        app: ats
+    spec:
+      containers:
+      - name: ats
+        image: trafficserver/trafficserver:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: ats-config
+          mountPath: /opt/etc/trafficserver/plugin.config
+          subPath: plugin.config
+        - name: ats-config
+          mountPath: /opt/etc/trafficserver/header_rewrite.config
+          subPath: header_rewrite.config
+        - name: ats-config
+          mountPath: /opt/etc/trafficserver/records.yaml
+          subPath: records.yaml
+        - name: ats-config
+          mountPath: /opt/etc/trafficserver/remap.config
+          subPath: remap.config
+        - name: ats-config
+          mountPath: /opt/etc/trafficserver/storage.config
+          subPath: storage.config
+        - name: ats-cache
+          mountPath: /var/cache/ats
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
+          limits:
+            cpu: "2"
+            memory: 2Gi
+      volumes:
+      - name: ats-config
+        configMap:
+          name: ats-config
+      - name: ats-cache
+        emptyDir: {}
