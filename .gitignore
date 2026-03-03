@@ -1,0 +1,25 @@
+# Local environment
+.env
+.venv
+
+# Binary archives
+*.tar.gz
+*.tgz
+
+# Temporary files
+?.*
+*.log
+*.tmp
+validate*.yaml
+
+# Editors
+*~
+*.bak
+.idea
+.vscode/*
+!.vscode/team.settings.json
+
+# OS-specific files
+.DS_Store
+.Trashes
+Thumbs.db

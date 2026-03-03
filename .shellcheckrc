@@ -1,0 +1,9 @@
+enable=all
+source-path=SCRIPTDIR
+
+disable=SC1091 # Not following: dotenv: openBinaryFile: does not exist (No such filern value (or use '|| true' to ignore).
+disable=SC2001 # See if you can use ${variable//search/replace} instead.
+disable=SC2012 # Use find instead of ls to better handle non-alphanumeric filenames. or directory)
+disable=SC2016 # Expressions don't expand in single quotes, use double quotes for that.
+disable=SC2207 # Prefer mapfile or read -a to split command output (or quote to avoid splitting).
+disable=SC2312 # Consider invoking this command separately to avoid masking its retu
