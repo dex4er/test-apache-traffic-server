@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: apache-traffic-server
 spec:
+  serviceName: ats-service
   replicas: 2
   selector:
     matchLabels:
@@ -46,5 +47,13 @@ spec:
       - name: ats-config
         configMap:
           name: ats-config
-      - name: ats-cache
-        emptyDir: {}
+  volumeClaimTemplates:
+  - metadata:
+      name: ats-cache
+    spec:
+      storageClassName: standard
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 300Mi

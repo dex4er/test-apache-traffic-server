@@ -3,13 +3,10 @@ kind: Kustomization
 namespace: podinfo
 
 resources:
-- helmrepository.yaml
-- helmrelease.yaml
+- statefulset.yaml
+- service.yaml
+- service-headless.yaml
 
-configMapGenerator:
-- name: helm-values-podinfo
-  files:
-  - values.yaml
-
-configurations:
-- configuration.yaml
+images:
+- name: ghcr.io/stefanprodan/podinfo
+  newTag: 6.10.2
