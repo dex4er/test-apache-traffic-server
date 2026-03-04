@@ -4,7 +4,7 @@ metadata:
   name: metrics-server
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 10s
   timeout: 2m
   maxHistory: 2
   driftDetection:
@@ -14,7 +14,7 @@ spec:
   storageNamespace: kube-system
   chart:
     spec:
-      interval: 1m
+      interval: 10s
       chart: metrics-server
       ## $ curl -qsS https://kubernetes-sigs.github.io/metrics-server/index.yaml | yq .entries.metrics-server.0.version
       version: 3.13.0

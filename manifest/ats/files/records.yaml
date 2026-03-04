@@ -63,8 +63,8 @@ records:
       #    https://docs.trafficserver.apache.org/en/latest/admin-guide/files/records.yaml.en.html#heuristic-expiration
       ##############################################################################
       heuristic_lm_factor: 0.1
-      heuristic_max_lifetime: 3600
-      heuristic_min_lifetime: 60
+      heuristic_max_lifetime: 300
+      heuristic_min_lifetime: 10
 
       ##############################################################################
       # Enable / disable HTTP caching. Useful for testing, but also as an
