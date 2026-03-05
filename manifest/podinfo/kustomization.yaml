@@ -5,7 +5,6 @@ namespace: podinfo
 resources:
 - statefulset.yaml
 - service.yaml
-- service-headless.yaml
 
 images:
 - name: ghcr.io/stefanprodan/podinfo

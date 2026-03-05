@@ -33,6 +33,12 @@ spec:
         kind: Kustomization
         name: flux-system
       patch: |-
+        - op: add
+          path: /spec/force
+          value: true
+        - op: add
+          path: /spec/prune
+          value: true
         - op: replace
           path: /spec/interval
           value: 10s

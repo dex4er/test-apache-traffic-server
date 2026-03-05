@@ -12,6 +12,7 @@ spec:
 
   path: ats
 
+  force: true
   prune: true
   wait: true
   deletionPolicy: WaitForTermination
