@@ -10,6 +10,7 @@ Simple local setup for running a kind cluster, pushing Flux manifests to a local
 - helm
 - flux
 - yq
+- httpie (`http` command, used for testing and Via header decoding — install separately, e.g. `brew install httpie`)
 
 ## Install tools with mise-en-place
 
@@ -66,14 +67,45 @@ This step also starts (or reuses) the local Docker registry container named `kin
 4. Verify app endpoint:
 
 ```bash
-curl -i http://localhost:31080
+http -v localhost:31080/podinfo-0 | ./tools/decode-via.pl
 ```
+
+This sends a request through ATS and decodes the `Via` response header into
+human-readable cache/proxy transaction codes (see [Tools](#tools) below).
 
 5. Delete cluster when done:
 
 ```bash
 ./kind-delete.sh
 ```
+
+## Tools
+
+### tools/decode-via.pl
+
+Decodes the `Via` response header added by ATS into human-readable transaction
+codes. ATS encodes cache lookup result, server connection info, proxy behaviour,
+and error codes into a compact string — `decode-via.pl` expands each code into
+a readable label such as `cache:hit-fresh` or `cache:miss`.
+
+Requires `httpie` (`http` command) and Perl. Pipe any HTTP response through it:
+
+```bash
+# Single request with decoded Via header
+http -v localhost:31080/podinfo-0 | ./tools/decode-via.pl
+
+# Watch cache warm up over repeated requests
+for i in $(seq 5); do http localhost:31080/podinfo-0 | ./tools/decode-via.pl | grep Via; done
+```
+
+The decoded `Via` line looks like:
+
+```
+Via: [uScMsSf pN eN:t cCp sS] cache:miss fill:written server:served
+```
+
+For the full encoding reference see the
+[ATS FAQ — How do I interpret the Via header?](https://docs.trafficserver.apache.org/en/latest/appendices/faq.en.html#how-do-i-interpret-the-via-header)
 
 ## CLI wrappers
 
@@ -92,6 +124,41 @@ These wrappers automatically set the correct kube context and kubeconfig for the
 - Flux sync is configured with `OCIRepository` (not Git).
 - Port `31080` on `localhost` is mapped to kind node port `31080`.
 - The `ats-service` Service uses `type: NodePort` with `nodePort: 31080`, so the app is reachable at `http://localhost:31080`.
+
+## ATS — accessing the pod
+
+Use `./kubectl.sh exec` to run commands inside the ATS pod:
+
+```bash
+./kubectl.sh exec -n ats apache-traffic-server-0 -- traffic_ctl config reload
+./kubectl.sh exec -n ats apache-traffic-server-0 -- traffic_ctl config get proxy.config.http.cache.required_headers
+./kubectl.sh exec -n ats apache-traffic-server-0 -- traffic_ctl metric get proxy.process.cache.volume_1.bytes
+./kubectl.sh logs -n ats apache-traffic-server-0 -f
+```
+
+For an interactive shell:
+
+```bash
+./kubectl.sh exec -it -n ats apache-traffic-server-0 -- /bin/sh
+```
+
+## ATS — resetting the disk cache (PVC wipe)
+
+The cache is stored on two PersistentVolumeClaims (`ats-cache-0-apache-traffic-server-0`
+and `ats-cache-1-apache-traffic-server-0`). Reloading config or restarting the pod
+does **not** clear them. To permanently wipe the cache:
+
+```bash
+./kubectl.sh delete pvc -n ats ats-cache-0-apache-traffic-server-0 ats-cache-1-apache-traffic-server-0
+```
+
+The StatefulSet will recreate empty PVCs when the pod is next scheduled, and ATS
+will rebuild the cache directory structure from scratch on startup. If the pod is
+already running, delete it to trigger rescheduling:
+
+```bash
+./kubectl.sh delete pod -n ats apache-traffic-server-0
+```
 
 ## Troubleshooting
 

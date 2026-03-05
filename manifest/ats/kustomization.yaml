@@ -1,3 +1,23 @@
+# Apache Traffic Server — test deployment
+#
+# ATS runs as a StatefulSet (statefulset.yaml) with two PersistentVolumeClaims
+# (ats-cache-0, ats-cache-1) mounted at /var/cache/ats/0 and /var/cache/ats/1,
+# providing separate disk cache storage for each origin under test.
+#
+# All configuration files are bundled into the "ats-config" ConfigMap by the
+# configMapGenerator below. Kustomize appends a content hash to the ConfigMap
+# name, and statefulset.yaml references it by that name. FluxCD / kustomize-
+# controller therefore rolls the StatefulSet pod automatically whenever any
+# config file changes — no manual restart is needed.
+#
+# To permanently wipe the disk cache (e.g. after changing storage.config or
+# cache.config rules), delete the PVCs and let the StatefulSet recreate them:
+#
+#   kubectl delete pvc -n ats -l app=apache-traffic-server
+#
+# The StatefulSet will then recreate empty PVCs on next pod scheduling and ATS
+# will rebuild the cache directory structure from scratch on startup.
+
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: ats
@@ -12,3 +32,4 @@ configMapGenerator:
   - files/plugin.config
   - files/remap.config
   - files/storage.config
+  - files/cache.config

@@ -1,3 +1,22 @@
+# podinfo — test origin server deployment
+#
+# Deployed via plain Kustomize manifests (not a Helm chart) to keep the setup
+# self-contained and avoid chart dependency overhead in the test cluster.
+#
+# podinfo runs as a StatefulSet (statefulset.yaml) with a headless Service
+# (service.yaml, clusterIP: None). The headless Service serves two purposes:
+#
+#   1. Per-pod DNS entries — Kubernetes creates an A record for every pod:
+#        podinfo-0.podinfo.podinfo.svc.cluster.local → pod-0 IP
+#        podinfo-1.podinfo.podinfo.svc.cluster.local → pod-1 IP
+#      ATS remap.config uses these to route /podinfo-0 and /podinfo-1 to a
+#      specific pod, enabling isolated per-pod cache testing.
+#
+#   2. Round-robin DNS for the service name — a DNS query for
+#        podinfo.podinfo.svc.cluster.local
+#      returns all pod IPs, so ATS distributes catch-all (/) requests across
+#      both instances without pinning to either one.
+
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: podinfo
