@@ -48,6 +48,14 @@ records:
 
       required_headers: 0
 
+      # Maximum age (seconds) of a stale object that may be served when
+      # revalidation fails (stale-if-error via negative_revalidating_enabled).
+      # Objects older than this value plus their max-age are never served stale.
+      # Default: 604800 (7 days) — lowered to 300 for testing stale-if-error
+      # behaviour with short-lived cache entries.
+
+      max_stale_age: 300
+
   ssl:
     client:
       verify:
