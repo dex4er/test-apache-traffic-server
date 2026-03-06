@@ -33,3 +33,4 @@ configMapGenerator:
   - files/remap.config
   - files/storage.config
   - files/cache.config
+  - files/ip_allow.yaml

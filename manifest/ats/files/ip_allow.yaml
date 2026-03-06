@@ -1,0 +1,41 @@
+# ip_allow.yaml controls which IP addresses are allowed to use which HTTP methods.
+#
+# ATS default: PURGE/PUSH/DELETE/TRACE are blocked for all addresses except
+# 127.0.0.1 and ::1.
+#
+# Override: PURGE is removed from the deny list so that NodePort callers can
+# invalidate individual cached URLs via:
+#
+#   curl -s -X PURGE http://localhost:31080/podinfo-0/some/path
+#
+# This is intentional in a local dev/test cluster. In production, restrict the
+# IP range to trusted clients.
+ip_allow:
+# Allow all methods from localhost (ATS default).
+- apply: in
+  ip_addrs: 127.0.0.1
+  action: allow
+  methods: ALL
+
+- apply: in
+  ip_addrs: ::1
+  action: allow
+  methods: ALL
+
+# Deny destructive methods from all other addresses, but NOT PURGE —
+# removing PURGE from the deny list allows it through for NodePort callers.
+- apply: in
+  ip_addrs: 0/0
+  action: deny
+  methods:
+  - PUSH
+  - DELETE
+  - TRACE
+
+- apply: in
+  ip_addrs: ::/0
+  action: deny
+  methods:
+  - PUSH
+  - DELETE
+  - TRACE

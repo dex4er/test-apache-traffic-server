@@ -37,6 +37,9 @@ spec:
         - name: ats-config
           mountPath: /opt/etc/trafficserver/cache.config
           subPath: cache.config
+        - name: ats-config
+          mountPath: /opt/etc/trafficserver/ip_allow.yaml
+          subPath: ip_allow.yaml
         - name: ats-cache-0
           mountPath: /var/cache/ats/0
         - name: ats-cache-1
