@@ -1,0 +1,77 @@
+records:
+  diags:
+    debug:
+      # Prefix-matched tags that enable debug logging output.
+      # Default: http|dns — added "cache" to troubleshoot caching behaviour.
+
+      tags: http|dns|cache
+
+  exec_thread:
+    # Maximum number of worker threads. 0 = auto-scale based on CPU count.
+    # Default: 0 — set to 2 to limit resource usage in the kind test cluster.
+
+    limit: 2
+
+  http:
+    # Ports ATS listens on for HTTP traffic (IPv4 and IPv6).
+    # Default: 8080 8080:ipv6 — kept explicit for clarity.
+
+    server_ports: 8080 8080:ipv6
+
+    # Detail level of the Via header added to requests forwarded to the origin.
+    # 0=off 1=basic 2=transaction codes 3=detailed codes 4=full protocol tags.
+    # Default: 1 — set to 3 to expose detailed cache/proxy codes for debugging.
+
+    insert_request_via_str: 3
+
+    # Detail level of the Via header added to responses returned to the client.
+    # 0=off 1=basic 2=transaction codes 3=detailed codes 4=full protocol tags.
+    # Default: 0 — set to 3 so decode-via.pl can decode cache hit/miss status.
+
+    insert_response_via_str: 3
+
+    cache:
+      # Minimum freshness lifetime (seconds) for objects with no explicit expiry,
+      # calculated heuristically from Last-Modified age (heuristic_lm_factor).
+      # Default: 3600 — lowered to 10 so test objects expire quickly.
+
+      heuristic_min_lifetime: 10
+
+      # Maximum freshness lifetime (seconds) for objects with no explicit expiry.
+      # Default: 86400 — lowered to 3600 to prevent very long heuristic caching.
+
+      heuristic_max_lifetime: 3600
+
+      # Minimum headers a response must have for ATS to consider it cacheable.
+      # 0=none required  1=Last-Modified or explicit lifetime  2=explicit lifetime.
+      # Default: 2 — set to 0 so podinfo responses (no Cache-Control) are cached.
+
+      required_headers: 0
+
+      # Maximum age (seconds) of a stale object that may be served when
+      # revalidation fails (stale-if-error via negative_revalidating_enabled).
+      # Default: 604800 (7 days) — lowered to 300 for testing stale-if-error.
+
+      max_stale_age: 300
+
+  ssl:
+    client:
+      verify:
+        server:
+          # Whether ATS verifies the TLS certificate of origin servers.
+          # DISABLED=skip  PERMISSIVE=verify but allow failure  ENFORCED=require valid cert.
+          # Default: DISABLED — set to PERMISSIVE to log cert issues without blocking.
+
+          policy: PERMISSIVE
+
+  # Number of threads dedicated to scheduled/background tasks.
+  # Default: 5 — set to 2 to reduce overhead in the kind test cluster.
+
+  task_threads: 2
+
+  url_remap:
+    # Whether requests that do not match any remap rule are rejected with an error.
+    # 1=required (reject unmatched)  0=allow pass-through.
+    # Default: 1 — set to 0 to allow unmatched requests during development.
+
+    remap_required: 0

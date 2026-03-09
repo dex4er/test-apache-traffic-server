@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-traffic-server-l1
+spec:
+  # NodePort exposes L1 to clients outside the cluster on port 31080.
+  type: NodePort
+  selector:
+    app: apache-traffic-server-l1
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 31080

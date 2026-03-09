@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: apache-traffic-server-l1
+spec:
+  serviceName: apache-traffic-server-l1
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-traffic-server-l1
+  template:
+    metadata:
+      labels:
+        app: apache-traffic-server-l1
+    spec:
+      containers:
+      - name: ats
+        image: trafficserver/trafficserver:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: apache-traffic-server-l1-config
+          mountPath: /opt/etc/trafficserver/cache.config
+          subPath: cache.config
+        - name: apache-traffic-server-l1-config
+          mountPath: /opt/etc/trafficserver/header_rewrite.config
+          subPath: header_rewrite.config
+        - name: apache-traffic-server-l1-config
+          mountPath: /opt/etc/trafficserver/ip_allow.yaml
+          subPath: ip_allow.yaml
+        - name: apache-traffic-server-l1-config
+          mountPath: /opt/etc/trafficserver/parent.config
+          subPath: parent.config
+        - name: apache-traffic-server-l1-config
+          mountPath: /opt/etc/trafficserver/plugin.config
+          subPath: plugin.config
+        - name: apache-traffic-server-l1-config
+          mountPath: /opt/etc/trafficserver/records.yaml
+          subPath: records.yaml
+        - name: apache-traffic-server-l1-config
+          mountPath: /opt/etc/trafficserver/remap.config
+          subPath: remap.config
+        - name: ats-logs
+          mountPath: /opt/var/log/trafficserver
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+          limits:
+            cpu: "1"
+            memory: 1Gi
+      - name: diags-log
+        image: busybox:latest
+        command:
+        - sh
+        - -c
+        - |
+          exec tail -n+1 -f /logs/diags.log
+        volumeMounts:
+        - name: ats-logs
+          mountPath: /logs
+      volumes:
+      - name: apache-traffic-server-l1-config
+        configMap:
+          name: apache-traffic-server-l1-config
+      - name: ats-logs
+        emptyDir: {}

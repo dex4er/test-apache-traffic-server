@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-traffic-server-l2
+spec:
+  # ClusterIP: L2 is accessible only within the cluster (by L1's parent.config).
+  # Not exposed via NodePort — clients always enter through L1.
+  type: ClusterIP
+  selector:
+    app: apache-traffic-server-l2
+  ports:
+  - port: 8080
+    targetPort: 8080

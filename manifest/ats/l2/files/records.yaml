@@ -18,21 +18,18 @@ records:
 
     server_ports: 8080 8080:ipv6
 
-    # Detail level of the Via header added to requests forwarded to the origin.
-    # 0=off 1=basic 2=transaction codes 3=detailed codes 4=full protocol tags.
-    # Default: 1 — set to 3 to expose detailed cache/proxy codes for debugging.
+    # Detail level of the Via header added to requests forwarded to origin.
+    # Default: 1 — set to 3 for debugging.
 
     insert_request_via_str: 3
 
-    # Detail level of the Via header added to responses returned to the client.
-    # 0=off 1=basic 2=transaction codes 3=detailed codes 4=full protocol tags.
-    # Default: 0 — set to 3 so decode-via.pl can decode cache hit/miss status.
+    # Detail level of the Via header added to responses returned to L1.
+    # Default: 0 — set to 3 so L1 can propagate Via to the client.
 
     insert_response_via_str: 3
 
     cache:
-      # Minimum freshness lifetime (seconds) for objects with no explicit expiry,
-      # calculated heuristically from Last-Modified age (heuristic_lm_factor).
+      # Minimum freshness lifetime (seconds) for objects with no explicit expiry.
       # Default: 3600 — lowered to 10 so test objects expire quickly.
 
       heuristic_min_lifetime: 10
@@ -48,11 +45,8 @@ records:
 
       required_headers: 0
 
-      # Maximum age (seconds) of a stale object that may be served when
-      # revalidation fails (stale-if-error via negative_revalidating_enabled).
-      # Objects older than this value plus their max-age are never served stale.
-      # Default: 604800 (7 days) — lowered to 300 for testing stale-if-error
-      # behaviour with short-lived cache entries.
+      # Maximum age (seconds) of a stale object that may be served on error.
+      # Default: 604800 (7 days) — lowered to 300 for testing.
 
       max_stale_age: 300
 
@@ -60,9 +54,8 @@ records:
     client:
       verify:
         server:
-          # Whether ATS verifies the TLS certificate of origin servers.
-          # DISABLED=skip  PERMISSIVE=verify but allow failure  ENFORCED=require valid cert.
-          # Default: DISABLED — set to PERMISSIVE to log cert issues without blocking.
+          # Whether ATS verifies TLS certificates of origin servers.
+          # Default: DISABLED — set to PERMISSIVE to log issues without blocking.
 
           policy: PERMISSIVE
 
@@ -72,8 +65,9 @@ records:
   task_threads: 2
 
   url_remap:
-    # Whether requests that do not match any remap rule are rejected with an error.
-    # 1=required (reject unmatched)  0=allow pass-through.
-    # Default: 1 — set to 0 to allow unmatched requests during development.
+    # L2 receives requests from L1 with absolute URLs (full http://host:port/path).
+    # remap_required=0 allows L2 to forward them directly to origin without
+    # needing its own remap rules.
+    # Default: 1 — set to 0 for parent-proxy operation.
 
     remap_required: 0

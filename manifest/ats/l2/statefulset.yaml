@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: apache-traffic-server-l2
+spec:
+  serviceName: apache-traffic-server-l2
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-traffic-server-l2
+  template:
+    metadata:
+      labels:
+        app: apache-traffic-server-l2
+    spec:
+      containers:
+      - name: ats
+        image: trafficserver/trafficserver:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: apache-traffic-server-l2-config
+          mountPath: /opt/etc/trafficserver/cache.config
+          subPath: cache.config
+        - name: apache-traffic-server-l2-config
+          mountPath: /opt/etc/trafficserver/header_rewrite.config
+          subPath: header_rewrite.config
+        - name: apache-traffic-server-l2-config
+          mountPath: /opt/etc/trafficserver/hosting.config
+          subPath: hosting.config
+        - name: apache-traffic-server-l2-config
+          mountPath: /opt/etc/trafficserver/ip_allow.yaml
+          subPath: ip_allow.yaml
+        - name: apache-traffic-server-l2-config
+          mountPath: /opt/etc/trafficserver/plugin.config
+          subPath: plugin.config
+        - name: apache-traffic-server-l2-config
+          mountPath: /opt/etc/trafficserver/records.yaml
+          subPath: records.yaml
+        - name: apache-traffic-server-l2-config
+          mountPath: /opt/etc/trafficserver/remap.config
+          subPath: remap.config
+        - name: apache-traffic-server-l2-config
+          mountPath: /opt/etc/trafficserver/storage.config
+          subPath: storage.config
+        - name: apache-traffic-server-l2-config
+          mountPath: /opt/etc/trafficserver/volume.config
+          subPath: volume.config
+        - name: apache-traffic-server-l2-cache-0
+          mountPath: /var/cache/ats/0
+        - name: apache-traffic-server-l2-cache-1
+          mountPath: /var/cache/ats/1
+        - name: ats-logs
+          mountPath: /opt/var/log/trafficserver
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
+          limits:
+            cpu: "2"
+            memory: 2Gi
+      - name: diags-log
+        image: busybox:latest
+        command:
+        - sh
+        - -c
+        - |
+          exec tail -n+1 -f /logs/diags.log
+        volumeMounts:
+        - name: ats-logs
+          mountPath: /logs
+      volumes:
+      - name: apache-traffic-server-l2-config
+        configMap:
+          name: apache-traffic-server-l2-config
+      - name: ats-logs
+        emptyDir: {}
+  volumeClaimTemplates:
+  - metadata:
+      name: apache-traffic-server-l2-cache-0
+    spec:
+      storageClassName: standard
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 300Mi
+  - metadata:
+      name: apache-traffic-server-l2-cache-1
+    spec:
+      storageClassName: standard
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 300Mi

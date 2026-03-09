@@ -1,0 +1,29 @@
+# ip_allow.yaml — L2 only receives connections from L1 within the cluster.
+# Keeping the same policy as L1 for consistency; PURGE is allowed so that
+# a cache invalidation sent to L1 can be forwarded to L2 if needed.
+ip_allow:
+- apply: in
+  ip_addrs: 127.0.0.1
+  action: allow
+  methods: ALL
+
+- apply: in
+  ip_addrs: ::1
+  action: allow
+  methods: ALL
+
+- apply: in
+  ip_addrs: 0/0
+  action: deny
+  methods:
+  - PUSH
+  - DELETE
+  - TRACE
+
+- apply: in
+  ip_addrs: ::/0
+  action: deny
+  methods:
+  - PUSH
+  - DELETE
+  - TRACE
