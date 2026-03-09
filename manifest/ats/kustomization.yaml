@@ -32,5 +32,10 @@ configMapGenerator:
   - files/plugin.config
   - files/remap.config
   - files/storage.config
+  - files/volume.config
+  - files/hosting.config
   - files/cache.config
   - files/ip_allow.yaml
+images:
+- name: trafficserver/trafficserver
+  newTag: 10.1.0

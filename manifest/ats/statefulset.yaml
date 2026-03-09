@@ -20,11 +20,20 @@ spec:
         - containerPort: 8080
         volumeMounts:
         - name: ats-config
-          mountPath: /opt/etc/trafficserver/plugin.config
-          subPath: plugin.config
+          mountPath: /opt/etc/trafficserver/cache.config
+          subPath: cache.config
         - name: ats-config
           mountPath: /opt/etc/trafficserver/header_rewrite.config
           subPath: header_rewrite.config
+        - name: ats-config
+          mountPath: /opt/etc/trafficserver/hosting.config
+          subPath: hosting.config
+        - name: ats-config
+          mountPath: /opt/etc/trafficserver/ip_allow.yaml
+          subPath: ip_allow.yaml
+        - name: ats-config
+          mountPath: /opt/etc/trafficserver/plugin.config
+          subPath: plugin.config
         - name: ats-config
           mountPath: /opt/etc/trafficserver/records.yaml
           subPath: records.yaml
@@ -35,15 +44,14 @@ spec:
           mountPath: /opt/etc/trafficserver/storage.config
           subPath: storage.config
         - name: ats-config
-          mountPath: /opt/etc/trafficserver/cache.config
-          subPath: cache.config
-        - name: ats-config
-          mountPath: /opt/etc/trafficserver/ip_allow.yaml
-          subPath: ip_allow.yaml
+          mountPath: /opt/etc/trafficserver/volume.config
+          subPath: volume.config
         - name: ats-cache-0
           mountPath: /var/cache/ats/0
         - name: ats-cache-1
           mountPath: /var/cache/ats/1
+        - name: ats-logs
+          mountPath: /opt/var/log/trafficserver
         resources:
           requests:
             cpu: 500m
@@ -51,10 +59,22 @@ spec:
           limits:
             cpu: "2"
             memory: 2Gi
+      - name: diags-log
+        image: busybox:latest
+        command:
+        - tail
+        - -n+1
+        - -f
+        - /logs/diags.log
+        volumeMounts:
+        - name: ats-logs
+          mountPath: /logs
       volumes:
       - name: ats-config
         configMap:
           name: ats-config
+      - name: ats-logs
+        emptyDir: {}
   volumeClaimTemplates:
   - metadata:
       name: ats-cache-0
@@ -64,7 +84,7 @@ spec:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 150Mi
+          storage: 300Mi
   - metadata:
       name: ats-cache-1
     spec:
@@ -73,4 +93,4 @@ spec:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 150Mi
+          storage: 300Mi

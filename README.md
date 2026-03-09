@@ -67,7 +67,7 @@ This step also starts (or reuses) the local Docker registry container named `kin
 4. Verify app endpoint:
 
 ```bash
-http -v localhost:31080/podinfo-0 | ./tools/decode-via.pl
+http -v localhost:31080/podinfo-0 X-Debug:x-remap,x-cache | ./tools/decode-via.pl
 ```
 
 This sends a request through ATS and decodes the `Via` response header into
