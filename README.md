@@ -123,33 +123,36 @@ These wrappers automatically set the correct kube context and kubeconfig for the
 - `flux-push.sh` publishes to `oci://localhost:5001/flux-<cluster-name>:latest`.
 - Flux sync is configured with `OCIRepository` (not Git).
 - Port `31080` on `localhost` is mapped to kind node port `31080`.
-- The `ats-service` Service uses `type: NodePort` with `nodePort: 31080`, so the app is reachable at `http://localhost:31080`.
+- The `apache-traffic-server-l1` Service uses `type: NodePort` with `nodePort: 31080`, so the app is reachable at `http://localhost:31080`.
+- The `apache-traffic-server-l2` Service is headless.
 
 ## ATS — accessing the pod
+
+Note: for L2 instance replace suffix with `l2-0`.
 
 Use `./kubectl.sh exec` to run commands inside the ATS pod:
 
 ```bash
-./kubectl.sh exec -n ats apache-traffic-server-0 -- traffic_ctl config reload
-./kubectl.sh exec -n ats apache-traffic-server-0 -- traffic_ctl config get proxy.config.http.cache.required_headers
-./kubectl.sh exec -n ats apache-traffic-server-0 -- traffic_ctl metric get proxy.process.cache.volume_1.bytes
-./kubectl.sh logs -n ats apache-traffic-server-0 -f
+./kubectl.sh exec -n ats apache-traffic-server-l1-0 -- traffic_ctl config reload
+./kubectl.sh exec -n ats apache-traffic-server-l1-0 -- traffic_ctl config get proxy.config.http.cache.required_headers
+./kubectl.sh exec -n ats apache-traffic-server-l1-0 -- traffic_ctl metric get proxy.process.cache.volume_1.bytes
+./kubectl.sh logs -n ats apache-traffic-server-l1-0 -f
 ```
 
 For an interactive shell:
 
 ```bash
-./kubectl.sh exec -it -n ats apache-traffic-server-0 -- /bin/sh
+./kubectl.sh exec -it -n ats apache-traffic-server-l1-0 -- /bin/sh
 ```
 
 ## ATS — resetting the disk cache (PVC wipe)
 
-The cache is stored on two PersistentVolumeClaims (`ats-cache-0-apache-traffic-server-0`
-and `ats-cache-1-apache-traffic-server-0`). Reloading config or restarting the pod
+The cache is stored on two PersistentVolumeClaims (`ats-cache-0-apache-traffic-server-l1-0`
+and `ats-cache-1-apache-traffic-server-l1-0`). Reloading config or restarting the pod
 does **not** clear them. To permanently wipe the cache:
 
 ```bash
-./kubectl.sh delete pvc -n ats ats-cache-0-apache-traffic-server-0 ats-cache-1-apache-traffic-server-0
+./kubectl.sh delete pvc -n ats ats-cache-0-apache-traffic-server-l1-0 ats-cache-1-apache-traffic-server-l1-0
 ```
 
 The StatefulSet will recreate empty PVCs when the pod is next scheduled, and ATS
@@ -157,7 +160,7 @@ will rebuild the cache directory structure from scratch on startup. If the pod i
 already running, delete it to trigger rescheduling:
 
 ```bash
-./kubectl.sh delete pod -n ats apache-traffic-server-0
+./kubectl.sh delete pod -n ats apache-traffic-server-l1-0
 ```
 
 ## Troubleshooting

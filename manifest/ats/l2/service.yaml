@@ -3,9 +3,12 @@ kind: Service
 metadata:
   name: apache-traffic-server-l2
 spec:
-  # ClusterIP: L2 is accessible only within the cluster (by L1's parent.config).
+  # Headless ClusterIP: DNS returns pod IPs directly instead of a virtual IP.
+  # L1's parent.config targets this service — with a single L2 replica, headless
+  # behaves identically to ClusterIP but avoids an extra hop through kube-proxy.
   # Not exposed via NodePort — clients always enter through L1.
   type: ClusterIP
+  clusterIP: None
   selector:
     app: apache-traffic-server-l2
   ports:
