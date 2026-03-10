@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
 - namespace-ats.yaml
 - namespace-backend.yaml
-- namespace-podinfo.yaml
