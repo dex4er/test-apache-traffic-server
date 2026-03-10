@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
 - namespaces/fluxcd-kustomization.yaml
 - system/fluxcd-kustomization.yaml
+- backend/fluxcd-kustomization.yaml
 - podinfo/fluxcd-kustomization.yaml
 - ats/fluxcd-kustomization.yaml

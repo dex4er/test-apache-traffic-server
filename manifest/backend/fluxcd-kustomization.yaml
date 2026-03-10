@@ -1,0 +1,26 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: backend
+  namespace: flux-system
+spec:
+  interval: 10s
+
+  sourceRef:
+    kind: OCIRepository
+    name: flux-system
+
+  path: backend
+
+  force: true
+  prune: true
+  wait: true
+  deletionPolicy: WaitForTermination
+
+  dependsOn:
+  - name: namespaces
+
+  postBuild:
+    substituteFrom:
+    - kind: ConfigMap
+      name: cluster-vars

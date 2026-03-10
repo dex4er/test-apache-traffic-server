@@ -1,0 +1,22 @@
+# backend — Bun HTTP server returning testing response.
+#
+# server.ts is stored in a ConfigMap generated below and mounted read-only
+# into the container at /app/server.ts. ConfigMap content hash is embedded
+# in the Deployment pod template so any script change triggers a rollout.
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: backend
+resources:
+- deployment.yaml
+- service.yaml
+configMapGenerator:
+- name: backend-config
+  options:
+    annotations:
+      kustomize.toolkit.fluxcd.io/substitute: disabled
+  files:
+  - files/server.ts
+images:
+- name: oven/bun
+  newTag: 1.3.10
