@@ -107,6 +107,16 @@ Via: [uScMsSf pN eN:t cCp sS] cache:miss fill:written server:served
 For the full encoding reference see the
 [ATS FAQ — How do I interpret the Via header?](https://docs.trafficserver.apache.org/en/latest/appendices/faq.en.html#how-do-i-interpret-the-via-header)
 
+## tools/http-out-format.pl
+
+Formats output from `http` command to make easier troubleshooting.
+
+Usage:
+
+```bash
+while :; do http --print=hb localhost:31080 X-Debug:X-Cache | ./tools/http-out-format.pl; sleep 2; done
+```
+
 ## CLI wrappers
 
 Use local wrappers instead of raw `flux`, `kubectl`, and `helm` commands:

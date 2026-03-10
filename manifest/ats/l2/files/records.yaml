@@ -28,6 +28,30 @@ records:
 
     insert_response_via_str: 3
 
+    # Timeout (seconds) for establishing a TCP connection to origin.
+    # Default: 30 — lowered to 2 so slow backends are abandoned quickly.
+
+    connect_attempts_timeout: 2
+
+    # Maximum number of retries after a failed connection attempt.
+    # Default: 3 — set to 0 to fail immediately and fall back to stale cache
+    # without wasting time on retries (3 × 2s = 6s of unnecessary waiting).
+
+    connect_attempts_max_retries: 0
+
+    # Absolute time limit (seconds) for an outbound transaction to origin.
+    # Fires regardless of TCP-level activity (unlike no_activity_timeout_out,
+    # which is reset by TCP ACKs when the origin is slow to respond).
+    # Default: 0 (disabled) — set to 3 so a slow backend is abandoned after 3s
+    # and stale cache is served instead.
+
+    transaction_active_timeout_out: 3
+
+    # Idle timeout (seconds) waiting for response data on an open origin connection.
+    # Default: 30 — lowered to 2 as a secondary guard (e.g. truly idle keepalive).
+
+    transaction_no_activity_timeout_out: 2
+
     cache:
       # Minimum freshness lifetime (seconds) for objects with no explicit expiry,
       # calculated heuristically from Last-Modified age (heuristic_lm_factor).
@@ -44,6 +68,20 @@ records:
       # Default: 604800 (7 days) — lowered to 300 for testing.
 
       max_stale_age: 300
+
+      # Serve a stale cached object when origin is unreachable, times out, or
+      # returns a 5xx error, instead of forwarding the error to L1.
+      # Default: 0 (disabled) — enabled so L2 disk cache covers backend outages.
+
+      negative_revalidating_enabled: 1
+
+      # Window (seconds) in which a stale object may be served while ATS
+      # revalidates in the background (stale-while-revalidate). Applies to
+      # responses without an explicit stale-while-revalidate directive.
+      # Default: 0 (disabled) — set to 60 so expired objects are served
+      # immediately and the background fetch runs asynchronously.
+
+      stale_while_revalidate_default_seconds: 60
 
       # Maximum size of the in-process RAM cache.
       # Default: -1 (auto ≈ 10% of available RAM). Set explicitly to avoid ATS
