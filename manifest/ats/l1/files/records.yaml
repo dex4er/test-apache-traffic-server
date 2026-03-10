@@ -54,6 +54,30 @@ records:
 
       max_stale_age: 300
 
+      # Serve a stale cached object when upstream (L2) is unreachable or returns
+      # a 5xx error, instead of forwarding the error to the client.
+      # Default: 0 (disabled) — enabled so L1 RAM cache covers L2 downtime.
+
+      negative_revalidating_enabled: 1
+
+      # Maximum age (seconds) of a stale object that may be served under
+      # negative_revalidating_enabled. Applies on top of max_stale_age.
+      # Default: 1800 — kept at default.
+
+      negative_revalidating_lifetime: 1800
+
+    parent_proxy:
+      # Seconds before a parent marked "down" is retried after connection failures.
+      # Default: 300 — lowered to 10 so L1 recovers quickly after L2 restarts.
+
+      retry_time: 10
+
+      # Number of consecutive failures before a parent is marked "down".
+      # Default: 10 — lowered to 3 so L1 detects L2 downtime faster and stops
+      # sending new requests to it sooner, relying on the RAM cache instead.
+
+      fail_threshold: 3
+
   ssl:
     client:
       verify:

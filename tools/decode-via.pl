@@ -133,9 +133,10 @@ sub decode_via {
 }
 
 while (<STDIN>) {
-    if (/^(?<pre>Via:[^\(]+\([^\[]+\[)(?<codes>[^\]]+)(?<post>\].*)$/) {
-        print "$+{pre}" . decode_via($+{codes}) . "$+{post}\n";
-    } else {
-        print;
+    if (/^Via:/) {
+        # Replace every [...] block on the line — a single Via header may carry
+        # codes from multiple proxy hops (one bracket pair per hop).
+        s/\[([^\]]+)\]/'[' . decode_via($1) . ']'/ge;
     }
+    print;
 }

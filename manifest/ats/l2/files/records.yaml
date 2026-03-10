@@ -32,7 +32,12 @@ records:
       # Minimum freshness lifetime (seconds) for objects with no explicit expiry.
       # Default: 3600 — lowered to 10 so test objects expire quickly.
 
-      heuristic_min_lifetime: 10
+      # Minimum freshness lifetime (seconds) for objects with no explicit expiry,
+      # calculated heuristically from Last-Modified age (heuristic_lm_factor).
+      # Default: 3600 — set to 120 to match ttl-in-cache in cache.config. Podinfo
+      # returns no cache headers, so heuristic is the fallback lifetime.
+
+      heuristic_min_lifetime: 120
 
       # Maximum freshness lifetime (seconds) for objects with no explicit expiry.
       # Default: 86400 — lowered to 3600 to prevent very long heuristic caching.

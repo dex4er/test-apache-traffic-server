@@ -18,6 +18,23 @@ spec:
         image: trafficserver/trafficserver:latest
         ports:
         - containerPort: 8080
+        readinessProbe:
+          # Mark the pod ready only after ATS is listening on port 8080.
+          # Kubernetes removes the pod from Service endpoints until this passes,
+          # so L1 parent.config traffic is not sent to a pod still initialising.
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          # Restart the container if ATS stops accepting connections.
+          # initialDelaySeconds gives ATS time to fully start before the first check.
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          failureThreshold: 3
         volumeMounts:
         - name: apache-traffic-server-l2-config
           mountPath: /opt/etc/trafficserver/cache.config
@@ -25,9 +42,6 @@ spec:
         - name: apache-traffic-server-l2-config
           mountPath: /opt/etc/trafficserver/header_rewrite.config
           subPath: header_rewrite.config
-        - name: apache-traffic-server-l2-config
-          mountPath: /opt/etc/trafficserver/hosting.config
-          subPath: hosting.config
         - name: apache-traffic-server-l2-config
           mountPath: /opt/etc/trafficserver/ip_allow.yaml
           subPath: ip_allow.yaml
@@ -43,13 +57,8 @@ spec:
         - name: apache-traffic-server-l2-config
           mountPath: /opt/etc/trafficserver/storage.config
           subPath: storage.config
-        - name: apache-traffic-server-l2-config
-          mountPath: /opt/etc/trafficserver/volume.config
-          subPath: volume.config
-        - name: apache-traffic-server-l2-cache-0
-          mountPath: /var/cache/ats/0
-        - name: apache-traffic-server-l2-cache-1
-          mountPath: /var/cache/ats/1
+        - name: apache-traffic-server-l2-cache
+          mountPath: /var/cache/ats
         - name: ats-logs
           mountPath: /opt/var/log/trafficserver
         resources:
@@ -77,16 +86,7 @@ spec:
         emptyDir: {}
   volumeClaimTemplates:
   - metadata:
-      name: apache-traffic-server-l2-cache-0
-    spec:
-      storageClassName: standard
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: 300Mi
-  - metadata:
-      name: apache-traffic-server-l2-cache-1
+      name: apache-traffic-server-l2-cache
     spec:
       storageClassName: standard
       accessModes:

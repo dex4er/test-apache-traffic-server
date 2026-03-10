@@ -18,6 +18,23 @@ spec:
         image: trafficserver/trafficserver:latest
         ports:
         - containerPort: 8080
+        readinessProbe:
+          # Mark the pod ready only after ATS is listening on port 8080.
+          # Kubernetes removes the pod from Service endpoints until this passes,
+          # so L1 traffic is not sent to a pod that is still initialising.
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          # Restart the container if ATS stops accepting connections.
+          # initialDelaySeconds gives ATS time to fully start before the first check.
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          failureThreshold: 3
         volumeMounts:
         - name: apache-traffic-server-l1-config
           mountPath: /opt/etc/trafficserver/cache.config
@@ -40,6 +57,11 @@ spec:
         - name: apache-traffic-server-l1-config
           mountPath: /opt/etc/trafficserver/remap.config
           subPath: remap.config
+        - name: apache-traffic-server-l1-config
+          mountPath: /opt/etc/trafficserver/storage.config
+          subPath: storage.config
+        - name: ats-cache
+          mountPath: /var/cache/ats
         - name: ats-logs
           mountPath: /opt/var/log/trafficserver
         resources:
@@ -63,5 +85,11 @@ spec:
       - name: apache-traffic-server-l1-config
         configMap:
           name: apache-traffic-server-l1-config
+      - name: ats-cache
+        emptyDir:
+          # medium: Memory mounts a tmpfs — storage backed entirely by RAM.
+          # Cache is intentionally ephemeral and lost on pod restart.
+          medium: Memory
+          sizeLimit: 128Mi
       - name: ats-logs
         emptyDir: {}

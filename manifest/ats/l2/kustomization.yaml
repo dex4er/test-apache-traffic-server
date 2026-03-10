@@ -21,13 +21,11 @@ configMapGenerator:
   files:
   - files/cache.config
   - files/header_rewrite.config
-  - files/hosting.config
   - files/ip_allow.yaml
   - files/plugin.config
   - files/records.yaml
   - files/remap.config
   - files/storage.config
-  - files/volume.config
 images:
 - name: trafficserver/trafficserver
-  newTag: 10.1.0
+  newTag: 10.0.5
