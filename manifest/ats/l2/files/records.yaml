@@ -29,9 +29,6 @@ records:
     insert_response_via_str: 3
 
     cache:
-      # Minimum freshness lifetime (seconds) for objects with no explicit expiry.
-      # Default: 3600 — lowered to 10 so test objects expire quickly.
-
       # Minimum freshness lifetime (seconds) for objects with no explicit expiry,
       # calculated heuristically from Last-Modified age (heuristic_lm_factor).
       # Default: 3600 — set to 120 to match ttl-in-cache in cache.config. Podinfo
@@ -54,6 +51,13 @@ records:
       # Default: 604800 (7 days) — lowered to 300 for testing.
 
       max_stale_age: 300
+
+      # Maximum size of the in-process RAM cache.
+      # Default: -1 (auto ≈ 10% of available RAM). Set explicitly to avoid ATS
+      # claiming excessive memory on top of the disk cache. 64Mi = 67108864 bytes.
+
+      ram_cache:
+        size: 67108864
 
   ssl:
     client:

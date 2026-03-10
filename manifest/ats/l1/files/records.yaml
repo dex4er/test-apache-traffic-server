@@ -54,6 +54,14 @@ records:
 
       max_stale_age: 300
 
+      # Maximum size of the in-process RAM cache.
+      # Default: -1 (auto ≈ 10% of available RAM). Set explicitly because L1
+      # already uses 128Mi tmpfs for disk cache — without a cap ATS would claim
+      # an additional ~10% of pod RAM on top of that. 64Mi = 67108864 bytes.
+
+      ram_cache:
+        size: 67108864
+
       # Serve a stale cached object when upstream (L2) is unreachable or returns
       # a 5xx error, instead of forwarding the error to the client.
       # Default: 0 (disabled) — enabled so L1 RAM cache covers L2 downtime.
