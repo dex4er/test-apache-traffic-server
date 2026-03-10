@@ -38,15 +38,9 @@ records:
       heuristic_min_lifetime: 10
 
       # Maximum freshness lifetime (seconds) for objects with no explicit expiry.
-      # Default: 86400 — lowered to 3600 to prevent very long heuristic caching.
+      # Default: 86400 — set to 60 to cap heuristic cache age on L1.
 
-      heuristic_max_lifetime: 3600
-
-      # Minimum headers a response must have for ATS to consider it cacheable.
-      # 0=none required  1=Last-Modified or explicit lifetime  2=explicit lifetime.
-      # Default: 2 — set to 0 so podinfo responses (no Cache-Control) are cached.
-
-      required_headers: 0
+      heuristic_max_lifetime: 60
 
       # Maximum age (seconds) of a stale object that may be served when
       # revalidation fails (stale-if-error via negative_revalidating_enabled).

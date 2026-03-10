@@ -32,7 +32,7 @@ eval "$(mise activate zsh)"
 
 - `manifest/` - Kubernetes manifests pushed as a Flux OCI artifact:
 	- `manifest/ats/` - Apache Traffic Server deployment and service, including ATS configuration files used by the container.
-	- `manifest/podinfo/` - `podinfo` workload used as a simulated backend service.
+	- `manifest/backend/` - backend workload used as a simulated origin service.
 	- `manifest/system/` - additional cluster/system-level Kubernetes services (currently includes `metrics-server`).
 	- `manifest/namespaces/` - manifests that create required namespaces.
 - `kind-create.sh` - creates kind cluster and local registry
@@ -67,7 +67,7 @@ This step also starts (or reuses) the local Docker registry container named `kin
 4. Verify app endpoint:
 
 ```bash
-http -v localhost:31080/podinfo-0 X-Debug:x-remap,x-cache | ./tools/decode-via.pl
+http -v localhost:31080/ X-Debug:x-remap,x-cache | ./tools/decode-via.pl
 ```
 
 This sends a request through ATS and decodes the `Via` response header into
@@ -92,10 +92,10 @@ Requires `httpie` (`http` command) and Perl. Pipe any HTTP response through it:
 
 ```bash
 # Single request with decoded Via header
-http -v localhost:31080/podinfo-0 | ./tools/decode-via.pl
+http -v localhost:31080/ | ./tools/decode-via.pl
 
 # Watch cache warm up over repeated requests
-for i in $(seq 5); do http localhost:31080/podinfo-0 | ./tools/decode-via.pl | grep Via; done
+for i in $(seq 5); do http localhost:31080/ | ./tools/decode-via.pl | grep Via; done
 ```
 
 The decoded `Via` line looks like:

@@ -3,8 +3,8 @@
 # Traffic flows: Client → L1 (RAM cache, no disk) → L2 (disk cache) → Origin
 #
 # l1/: edge cache, NodePort 31080, no persistent storage, uses L2 as parent
-#      for per-pod origins (/podinfo-0, /podinfo-1).
-# l2/: backbone cache, ClusterIP-only, two PVCs for per-pod disk isolation.
+#      for cacheable upstream origins.
+# l2/: backbone cache, ClusterIP-only, two PVCs for disk cache storage.
 #
 # ConfigMaps are generated separately per tier so that changes to one tier
 # do not restart the other.

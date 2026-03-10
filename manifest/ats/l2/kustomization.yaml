@@ -1,7 +1,7 @@
 # L2 — backbone cache tier (disk storage, internal-only access).
 #
-# Receives upstream requests from L1 for per-pod origins (/podinfo-0,
-# /podinfo-1). L2 caches responses on disk and returns them to L1.
+# Receives upstream requests from L1 for cached origins. L2 caches
+# responses on disk and returns them to L1.
 # L2 is not accessible from outside the cluster (ClusterIP service only).
 #
 # L1 sends requests with full absolute URLs after its remap step.

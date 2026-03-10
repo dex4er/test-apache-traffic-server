@@ -2,7 +2,7 @@
 
 See [README.md](README.md) for full project documentation, including:
 
-- architecture overview (ATS, podinfo, FluxCD, kind cluster)
+- architecture overview (ATS, backend, FluxCD, kind cluster)
 - project layout
 - quick start guide
 - CLI wrappers (`./kubectl.sh`, `./flux.sh`, `./helm.sh`) — always use these

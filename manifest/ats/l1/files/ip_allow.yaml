@@ -6,7 +6,7 @@
 # Override: PURGE is removed from the deny list so that NodePort callers can
 # invalidate individual cached URLs via:
 #
-#   curl -s -X PURGE http://localhost:31080/podinfo-0/some/path
+#   curl -s -X PURGE http://localhost:31080/some/path
 #
 # This is intentional in a local dev/test cluster. In production, restrict the
 # IP range to trusted clients.

@@ -1,9 +1,9 @@
 # L1 — edge cache tier (RAM-only, no disk storage).
 #
-# Receives all client traffic via NodePort 31080. For per-pod origins
-# (/podinfo-0, /podinfo-1) it uses L2 as a parent proxy (parent.config),
-# so misses are satisfied from L2's disk cache rather than going directly
-# to origin. Catch-all traffic (/) bypasses L2 and goes straight to origin.
+# Receives all client traffic via NodePort 31080. For origins listed in
+# parent.config it uses L2 as a parent proxy so misses are satisfied from
+# L2's disk cache rather than going directly to origin. Catch-all traffic
+# bypasses L2 and goes straight to origin.
 #
 # ConfigMap changes trigger automatic pod rollout via Kustomize content hash.
 
