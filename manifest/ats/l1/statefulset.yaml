@@ -4,7 +4,7 @@ metadata:
   name: apache-traffic-server-l1
 spec:
   serviceName: apache-traffic-server-l1
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: apache-traffic-server-l1
