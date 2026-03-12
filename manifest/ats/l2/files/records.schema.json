@@ -1,0 +1,2988 @@
+{
+  "additionalProperties" : false,
+  "properties" : {
+    "records" : {
+      "additionalProperties" : false,
+      "properties" : {
+        "accept_threads" : {
+          "description" : "proxy.config.accept_threads: 1",
+          "type" : "integer"
+        },
+        "admin" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "user_id" : {
+              "description" : "proxy.config.admin.user_id: nobody",
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "allocator" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "dontdump_iobuffers" : {
+              "description" : "proxy.config.allocator.dontdump_iobuffers: 1",
+              "type" : "integer"
+            },
+            "hugepages" : {
+              "description" : "proxy.config.allocator.hugepages: 0",
+              "type" : "integer"
+            },
+            "iobuf_chunk_sizes" : {
+              "description" : "proxy.config.allocator.iobuf_chunk_sizes: null",
+              "type" : "string"
+            },
+            "thread_freelist_low_watermark" : {
+              "description" : "proxy.config.allocator.thread_freelist_low_watermark: 32",
+              "type" : "integer"
+            },
+            "thread_freelist_size" : {
+              "description" : "proxy.config.allocator.thread_freelist_size: 512",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "bin_path" : {
+          "description" : "proxy.config.bin_path: bin",
+          "type" : "string"
+        },
+        "body_factory" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "enable_customizations" : {
+              "description" : "proxy.config.body_factory.enable_customizations: 1",
+              "type" : "integer"
+            },
+            "enable_logging" : {
+              "description" : "proxy.config.body_factory.enable_logging: 0",
+              "type" : "integer"
+            },
+            "response_max_size" : {
+              "description" : "proxy.config.body_factory.response_max_size: 8192",
+              "type" : "integer"
+            },
+            "response_suppression_mode" : {
+              "description" : "proxy.config.body_factory.response_suppression_mode: 0",
+              "type" : "integer"
+            },
+            "template_base" : {
+              "description" : "proxy.config.body_factory.template_base: NONE",
+              "type" : "string"
+            },
+            "template_sets_dir" : {
+              "description" : "proxy.config.body_factory.template_sets_dir: etc/trafficserver/body_factory",
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "cache" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "agg_write_backlog" : {
+              "description" : "proxy.config.cache.agg_write_backlog: 5242880",
+              "type" : "integer"
+            },
+            "alt_rewrite_max_size" : {
+              "description" : "proxy.config.cache.alt_rewrite_max_size: 4096",
+              "type" : "integer"
+            },
+            "control" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "filename" : {
+                  "description" : "proxy.config.cache.control.filename: cache.config",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "dir" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "sync_frequency" : {
+                  "description" : "proxy.config.cache.dir.sync_frequency: 60",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "enable_checksum" : {
+              "description" : "proxy.config.cache.enable_checksum: 0",
+              "type" : "integer"
+            },
+            "enable_read_while_writer" : {
+              "description" : "proxy.config.cache.enable_read_while_writer: 1",
+              "type" : "integer"
+            },
+            "force_sector_size" : {
+              "description" : "proxy.config.cache.force_sector_size: 0",
+              "type" : "integer"
+            },
+            "hit_evacuate_percent" : {
+              "description" : "proxy.config.cache.hit_evacuate_percent: 0",
+              "type" : "integer"
+            },
+            "hit_evacuate_size_limit" : {
+              "description" : "proxy.config.cache.hit_evacuate_size_limit: 0",
+              "type" : "integer"
+            },
+            "hostdb" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "disable_reverse_lookup" : {
+                  "description" : "proxy.config.cache.hostdb.disable_reverse_lookup: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "hosting_filename" : {
+              "description" : "proxy.config.cache.hosting_filename: hosting.config",
+              "type" : "string"
+            },
+            "ip_allow" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "filename" : {
+                  "description" : "proxy.config.cache.ip_allow.filename: ip_allow.yaml",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "ip_categories" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "filename" : {
+                  "description" : "proxy.config.cache.ip_categories.filename: ",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "limits" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "http" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "max_alts" : {
+                      "description" : "proxy.config.cache.limits.http.max_alts: 5",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "log" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "alternate" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "eviction" : {
+                      "description" : "proxy.config.cache.log.alternate.eviction: 0",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "max_disk_errors" : {
+              "description" : "proxy.config.cache.max_disk_errors: 5",
+              "type" : "integer"
+            },
+            "max_doc_size" : {
+              "description" : "proxy.config.cache.max_doc_size: 0",
+              "type" : "integer"
+            },
+            "min_average_object_size" : {
+              "description" : "proxy.config.cache.min_average_object_size: 8000",
+              "type" : "integer"
+            },
+            "mutex_retry_delay" : {
+              "description" : "proxy.config.cache.mutex_retry_delay: 2",
+              "type" : "integer"
+            },
+            "permit" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "pinning" : {
+                  "description" : "proxy.config.cache.permit.pinning: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "persist_bad_disks" : {
+              "description" : "proxy.config.cache.persist_bad_disks: 0",
+              "type" : "integer"
+            },
+            "ram_cache" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "algorithm" : {
+                  "description" : "proxy.config.cache.ram_cache.algorithm: 1",
+                  "type" : "integer"
+                },
+                "compress" : {
+                  "description" : "proxy.config.cache.ram_cache.compress: 0",
+                  "type" : "integer"
+                },
+                "compress_percent" : {
+                  "description" : "proxy.config.cache.ram_cache.compress_percent: 90",
+                  "type" : "integer"
+                },
+                "size" : {
+                  "description" : "proxy.config.cache.ram_cache.size: -1",
+                  "type" : "integer"
+                },
+                "use_seen_filter" : {
+                  "description" : "proxy.config.cache.ram_cache.use_seen_filter: 1",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "ram_cache_cutoff" : {
+              "description" : "proxy.config.cache.ram_cache_cutoff: 4194304",
+              "type" : "integer"
+            },
+            "read_while_writer" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "max_retries" : {
+                  "description" : "proxy.config.cache.read_while_writer.max_retries: 10",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "read_while_writer_retry" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "delay" : {
+                  "description" : "proxy.config.cache.read_while_writer_retry.delay: 50",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "select_alternate" : {
+              "description" : "proxy.config.cache.select_alternate: 1",
+              "type" : "integer"
+            },
+            "target_fragment_size" : {
+              "description" : "proxy.config.cache.target_fragment_size: 1048576",
+              "type" : "integer"
+            },
+            "threads_per_disk" : {
+              "description" : "proxy.config.cache.threads_per_disk: 8",
+              "type" : "integer"
+            },
+            "volume_filename" : {
+              "description" : "proxy.config.cache.volume_filename: volume.config",
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "config_update_interval_ms" : {
+          "description" : "proxy.config.config_update_interval_ms: 3000",
+          "type" : "integer"
+        },
+        "core_limit" : {
+          "description" : "proxy.config.core_limit: -1",
+          "type" : "integer"
+        },
+        "crash_log_helper" : {
+          "description" : "proxy.config.crash_log_helper: null",
+          "type" : "string"
+        },
+        "diags" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "action" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "enabled" : {
+                  "description" : "proxy.config.diags.action.enabled: 0",
+                  "type" : "integer"
+                },
+                "tags" : {
+                  "description" : "proxy.config.diags.action.tags: null",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "debug" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "client_ip" : {
+                  "description" : "proxy.config.diags.debug.client_ip: null",
+                  "type" : "string"
+                },
+                "enabled" : {
+                  "description" : "proxy.config.diags.debug.enabled: 0",
+                  "type" : "integer"
+                },
+                "tags" : {
+                  "description" : "proxy.config.diags.debug.tags: http|dns|cache",
+                  "type" : "string"
+                },
+                "throttling_interval_msec" : {
+                  "description" : "proxy.config.diags.debug.throttling_interval_msec: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "logfile" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "filename" : {
+                  "description" : "proxy.config.diags.logfile.filename: diags.log",
+                  "type" : "string"
+                },
+                "rolling_enabled" : {
+                  "description" : "proxy.config.diags.logfile.rolling_enabled: 0",
+                  "type" : "integer"
+                },
+                "rolling_interval_sec" : {
+                  "description" : "proxy.config.diags.logfile.rolling_interval_sec: 3600",
+                  "type" : "integer"
+                },
+                "rolling_min_count" : {
+                  "description" : "proxy.config.diags.logfile.rolling_min_count: 0",
+                  "type" : "integer"
+                },
+                "rolling_size_mb" : {
+                  "description" : "proxy.config.diags.logfile.rolling_size_mb: 10",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "logfile_perm" : {
+              "description" : "proxy.config.diags.logfile_perm: rw-r--r--",
+              "type" : "string"
+            },
+            "output" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "alert" : {
+                  "description" : "proxy.config.diags.output.alert: L",
+                  "type" : "string"
+                },
+                "debug" : {
+                  "description" : "proxy.config.diags.output.debug: E",
+                  "type" : "string"
+                },
+                "diag" : {
+                  "description" : "proxy.config.diags.output.diag: E",
+                  "type" : "string"
+                },
+                "emergency" : {
+                  "description" : "proxy.config.diags.output.emergency: L",
+                  "type" : "string"
+                },
+                "error" : {
+                  "description" : "proxy.config.diags.output.error: L",
+                  "type" : "string"
+                },
+                "fatal" : {
+                  "description" : "proxy.config.diags.output.fatal: L",
+                  "type" : "string"
+                },
+                "note" : {
+                  "description" : "proxy.config.diags.output.note: L",
+                  "type" : "string"
+                },
+                "status" : {
+                  "description" : "proxy.config.diags.output.status: L",
+                  "type" : "string"
+                },
+                "warning" : {
+                  "description" : "proxy.config.diags.output.warning: L",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "show_location" : {
+              "description" : "proxy.config.diags.show_location: 1",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "dns" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "connection_mode" : {
+              "description" : "proxy.config.dns.connection_mode: 0",
+              "type" : "integer"
+            },
+            "dedicated_thread" : {
+              "description" : "proxy.config.dns.dedicated_thread: 0",
+              "type" : "integer"
+            },
+            "failover_number" : {
+              "description" : "proxy.config.dns.failover_number: 5",
+              "type" : "integer"
+            },
+            "failover_period" : {
+              "description" : "proxy.config.dns.failover_period: 60",
+              "type" : "integer"
+            },
+            "local_ipv4" : {
+              "description" : "proxy.config.dns.local_ipv4: null",
+              "type" : "string"
+            },
+            "local_ipv6" : {
+              "description" : "proxy.config.dns.local_ipv6: null",
+              "type" : "string"
+            },
+            "lookup_timeout" : {
+              "description" : "proxy.config.dns.lookup_timeout: 20",
+              "type" : "integer"
+            },
+            "max_dns_in_flight" : {
+              "description" : "proxy.config.dns.max_dns_in_flight: 2048",
+              "type" : "integer"
+            },
+            "max_tcp_continuous_failures" : {
+              "description" : "proxy.config.dns.max_tcp_continuous_failures: 10",
+              "type" : "integer"
+            },
+            "nameservers" : {
+              "description" : "proxy.config.dns.nameservers: null",
+              "type" : "string"
+            },
+            "resolv_conf" : {
+              "description" : "proxy.config.dns.resolv_conf: /etc/resolv.conf",
+              "type" : "string"
+            },
+            "retries" : {
+              "description" : "proxy.config.dns.retries: 5",
+              "type" : "integer"
+            },
+            "round_robin_nameservers" : {
+              "description" : "proxy.config.dns.round_robin_nameservers: 1",
+              "type" : "integer"
+            },
+            "search_default_domains" : {
+              "description" : "proxy.config.dns.search_default_domains: 0",
+              "type" : "integer"
+            },
+            "splitDNS" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "enabled" : {
+                  "description" : "proxy.config.dns.splitDNS.enabled: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "splitdns" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "filename" : {
+                  "description" : "proxy.config.dns.splitdns.filename: splitdns.config",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "validate_query_name" : {
+              "description" : "proxy.config.dns.validate_query_name: 0",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "dump_mem_info_frequency" : {
+          "description" : "proxy.config.dump_mem_info_frequency: 0",
+          "type" : "integer"
+        },
+        "error" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "logfile" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "filename" : {
+                  "description" : "proxy.config.error.logfile.filename: error.log",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "exec_thread" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "affinity" : {
+              "description" : "proxy.config.exec_thread.affinity: 1",
+              "type" : "integer"
+            },
+            "autoconfig" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "enabled" : {
+                  "description" : "proxy.config.exec_thread.autoconfig.enabled: 1",
+                  "type" : "integer"
+                },
+                "scale" : {
+                  "description" : "proxy.config.exec_thread.autoconfig.scale: 1",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "limit" : {
+              "description" : "proxy.config.exec_thread.limit: 2",
+              "type" : "integer"
+            },
+            "listen" : {
+              "description" : "proxy.config.exec_thread.listen: 0",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "header" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "parse" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "no_host_url_redirect" : {
+                  "description" : "proxy.config.header.parse.no_host_url_redirect: null",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "hostdb" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "enabled" : {
+              "description" : "proxy.config.hostdb.enabled: 1",
+              "type" : "integer"
+            },
+            "fail" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "timeout" : {
+                  "description" : "proxy.config.hostdb.fail.timeout: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "host_file" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "interval" : {
+                  "description" : "proxy.config.hostdb.host_file.interval: 86400",
+                  "type" : "integer"
+                },
+                "path" : {
+                  "description" : "proxy.config.hostdb.host_file.path: null",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "io" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "max_buffer_index" : {
+                  "description" : "proxy.config.hostdb.io.max_buffer_index: 8",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "ip_resolve" : {
+              "description" : "proxy.config.hostdb.ip_resolve: null",
+              "type" : "string"
+            },
+            "lookup_timeout" : {
+              "description" : "proxy.config.hostdb.lookup_timeout: 30",
+              "type" : "integer"
+            },
+            "max_count" : {
+              "description" : "proxy.config.hostdb.max_count: -1",
+              "type" : "integer"
+            },
+            "max_size" : {
+              "description" : "proxy.config.hostdb.max_size: 10485760",
+              "type" : "integer"
+            },
+            "migrate_on_demand" : {
+              "description" : "proxy.config.hostdb.migrate_on_demand: 0",
+              "type" : "integer"
+            },
+            "partitions" : {
+              "description" : "proxy.config.hostdb.partitions: 64",
+              "type" : "integer"
+            },
+            "re_dns_on_reload" : {
+              "description" : "proxy.config.hostdb.re_dns_on_reload: 0",
+              "type" : "integer"
+            },
+            "round_robin_max_count" : {
+              "description" : "proxy.config.hostdb.round_robin_max_count: 16",
+              "type" : "integer"
+            },
+            "serve_stale_for" : {
+              "description" : "proxy.config.hostdb.serve_stale_for: 0",
+              "type" : "integer"
+            },
+            "strict_round_robin" : {
+              "description" : "proxy.config.hostdb.strict_round_robin: 0",
+              "type" : "integer"
+            },
+            "timed_round_robin" : {
+              "description" : "proxy.config.hostdb.timed_round_robin: 0",
+              "type" : "integer"
+            },
+            "timeout" : {
+              "description" : "proxy.config.hostdb.timeout: 86400",
+              "type" : "integer"
+            },
+            "ttl_mode" : {
+              "description" : "proxy.config.hostdb.ttl_mode: 0",
+              "type" : "integer"
+            },
+            "verify_after" : {
+              "description" : "proxy.config.hostdb.verify_after: 720",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "http" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "accept_no_activity_timeout" : {
+              "description" : "proxy.config.http.accept_no_activity_timeout: 120",
+              "type" : "integer"
+            },
+            "allow_half_open" : {
+              "description" : "proxy.config.http.allow_half_open: 1",
+              "type" : "integer"
+            },
+            "allow_multi_range" : {
+              "description" : "proxy.config.http.allow_multi_range: 0",
+              "type" : "integer"
+            },
+            "anonymize_other_header_list" : {
+              "description" : "proxy.config.http.anonymize_other_header_list: null",
+              "type" : "string"
+            },
+            "anonymize_remove_client_ip" : {
+              "description" : "proxy.config.http.anonymize_remove_client_ip: 0",
+              "type" : "integer"
+            },
+            "anonymize_remove_cookie" : {
+              "description" : "proxy.config.http.anonymize_remove_cookie: 0",
+              "type" : "integer"
+            },
+            "anonymize_remove_from" : {
+              "description" : "proxy.config.http.anonymize_remove_from: 0",
+              "type" : "integer"
+            },
+            "anonymize_remove_referer" : {
+              "description" : "proxy.config.http.anonymize_remove_referer: 0",
+              "type" : "integer"
+            },
+            "anonymize_remove_user_agent" : {
+              "description" : "proxy.config.http.anonymize_remove_user_agent: 0",
+              "type" : "integer"
+            },
+            "attach_server_session_to_client" : {
+              "description" : "proxy.config.http.attach_server_session_to_client: 0",
+              "type" : "integer"
+            },
+            "auth_server_session_private" : {
+              "description" : "proxy.config.http.auth_server_session_private: 1",
+              "type" : "integer"
+            },
+            "background_fill_active_timeout" : {
+              "description" : "proxy.config.http.background_fill_active_timeout: 0",
+              "type" : "integer"
+            },
+            "background_fill_completed_threshold" : {
+              "description" : "proxy.config.http.background_fill_completed_threshold: 0",
+              "type" : "integer"
+            },
+            "cache" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "cache_responses_to_cookies" : {
+                  "description" : "proxy.config.http.cache.cache_responses_to_cookies: 1",
+                  "type" : "integer"
+                },
+                "cache_urls_that_look_dynamic" : {
+                  "description" : "proxy.config.http.cache.cache_urls_that_look_dynamic: 1",
+                  "type" : "integer"
+                },
+                "generation" : {
+                  "description" : "proxy.config.http.cache.generation: -1",
+                  "type" : "integer"
+                },
+                "guaranteed_max_lifetime" : {
+                  "description" : "proxy.config.http.cache.guaranteed_max_lifetime: 31536000",
+                  "type" : "integer"
+                },
+                "guaranteed_min_lifetime" : {
+                  "description" : "proxy.config.http.cache.guaranteed_min_lifetime: 0",
+                  "type" : "integer"
+                },
+                "heuristic_lm_factor" : {
+                  "description" : "proxy.config.http.cache.heuristic_lm_factor: 0.100000001",
+                  "type" : "number"
+                },
+                "heuristic_max_lifetime" : {
+                  "description" : "proxy.config.http.cache.heuristic_max_lifetime: 120",
+                  "type" : "integer"
+                },
+                "heuristic_min_lifetime" : {
+                  "description" : "proxy.config.http.cache.heuristic_min_lifetime: 120",
+                  "type" : "integer"
+                },
+                "http" : {
+                  "description" : "proxy.config.http.cache.http: 1",
+                  "type" : "integer"
+                },
+                "ignore_accept_charset_mismatch" : {
+                  "description" : "proxy.config.http.cache.ignore_accept_charset_mismatch: 2",
+                  "type" : "integer"
+                },
+                "ignore_accept_encoding_mismatch" : {
+                  "description" : "proxy.config.http.cache.ignore_accept_encoding_mismatch: 2",
+                  "type" : "integer"
+                },
+                "ignore_accept_language_mismatch" : {
+                  "description" : "proxy.config.http.cache.ignore_accept_language_mismatch: 2",
+                  "type" : "integer"
+                },
+                "ignore_accept_mismatch" : {
+                  "description" : "proxy.config.http.cache.ignore_accept_mismatch: 2",
+                  "type" : "integer"
+                },
+                "ignore_authentication" : {
+                  "description" : "proxy.config.http.cache.ignore_authentication: 0",
+                  "type" : "integer"
+                },
+                "ignore_client_cc_max_age" : {
+                  "description" : "proxy.config.http.cache.ignore_client_cc_max_age: 1",
+                  "type" : "integer"
+                },
+                "ignore_client_no_cache" : {
+                  "description" : "proxy.config.http.cache.ignore_client_no_cache: 1",
+                  "type" : "integer"
+                },
+                "ignore_query" : {
+                  "description" : "proxy.config.http.cache.ignore_query: 0",
+                  "type" : "integer"
+                },
+                "ignore_server_no_cache" : {
+                  "description" : "proxy.config.http.cache.ignore_server_no_cache: 0",
+                  "type" : "integer"
+                },
+                "ims_on_client_no_cache" : {
+                  "description" : "proxy.config.http.cache.ims_on_client_no_cache: 1",
+                  "type" : "integer"
+                },
+                "max_open_read_retries" : {
+                  "description" : "proxy.config.http.cache.max_open_read_retries: -1",
+                  "type" : "integer"
+                },
+                "max_open_write_retries" : {
+                  "description" : "proxy.config.http.cache.max_open_write_retries: 1",
+                  "type" : "integer"
+                },
+                "max_open_write_retry_timeout" : {
+                  "description" : "proxy.config.http.cache.max_open_write_retry_timeout: 0",
+                  "type" : "integer"
+                },
+                "max_stale_age" : {
+                  "description" : "proxy.config.http.cache.max_stale_age: 300",
+                  "type" : "integer"
+                },
+                "open_read_retry_time" : {
+                  "description" : "proxy.config.http.cache.open_read_retry_time: 10",
+                  "type" : "integer"
+                },
+                "open_write_fail_action" : {
+                  "description" : "proxy.config.http.cache.open_write_fail_action: 0",
+                  "type" : "integer"
+                },
+                "post_method" : {
+                  "description" : "proxy.config.http.cache.post_method: 0",
+                  "type" : "integer"
+                },
+                "range" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "lookup" : {
+                      "description" : "proxy.config.http.cache.range.lookup: 1",
+                      "type" : "integer"
+                    },
+                    "write" : {
+                      "description" : "proxy.config.http.cache.range.write: 0",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "required_headers" : {
+                  "description" : "proxy.config.http.cache.required_headers: 2",
+                  "type" : "integer"
+                },
+                "when_to_revalidate" : {
+                  "description" : "proxy.config.http.cache.when_to_revalidate: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "chunking" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "size" : {
+                  "description" : "proxy.config.http.chunking.size: 4096",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "chunking_enabled" : {
+              "description" : "proxy.config.http.chunking_enabled: 1",
+              "type" : "integer"
+            },
+            "connect" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "down" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "policy" : {
+                      "description" : "proxy.config.http.connect.down.policy: 2",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "connect_attempts_max_retries" : {
+              "description" : "proxy.config.http.connect_attempts_max_retries: 0",
+              "type" : "integer"
+            },
+            "connect_attempts_max_retries_down_server" : {
+              "description" : "proxy.config.http.connect_attempts_max_retries_down_server: 1",
+              "type" : "integer"
+            },
+            "connect_attempts_rr_retries" : {
+              "description" : "proxy.config.http.connect_attempts_rr_retries: 3",
+              "type" : "integer"
+            },
+            "connect_attempts_timeout" : {
+              "description" : "proxy.config.http.connect_attempts_timeout: 2",
+              "type" : "integer"
+            },
+            "connect_ports" : {
+              "description" : "proxy.config.http.connect_ports: 443",
+              "type" : "integer"
+            },
+            "default_buffer_size" : {
+              "description" : "proxy.config.http.default_buffer_size: 8",
+              "type" : "integer"
+            },
+            "default_buffer_water_mark" : {
+              "description" : "proxy.config.http.default_buffer_water_mark: 32768",
+              "type" : "integer"
+            },
+            "disallow_post_100_continue" : {
+              "description" : "proxy.config.http.disallow_post_100_continue: 0",
+              "type" : "integer"
+            },
+            "doc_in_cache_skip_dns" : {
+              "description" : "proxy.config.http.doc_in_cache_skip_dns: 1",
+              "type" : "integer"
+            },
+            "down_server" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "cache_time" : {
+                  "description" : "proxy.config.http.down_server.cache_time: 60",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "drop_chunked_trailers" : {
+              "description" : "proxy.config.http.drop_chunked_trailers: 1",
+              "type" : "integer"
+            },
+            "enable_http_stats" : {
+              "description" : "proxy.config.http.enable_http_stats: 1",
+              "type" : "integer"
+            },
+            "enabled" : {
+              "description" : "proxy.config.http.enabled: 1",
+              "type" : "integer"
+            },
+            "errors" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "log_error_pages" : {
+                  "description" : "proxy.config.http.errors.log_error_pages: 1",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "flow_control" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "enabled" : {
+                  "description" : "proxy.config.http.flow_control.enabled: 0",
+                  "type" : "integer"
+                },
+                "high_water" : {
+                  "description" : "proxy.config.http.flow_control.high_water: 0",
+                  "type" : "integer"
+                },
+                "low_water" : {
+                  "description" : "proxy.config.http.flow_control.low_water: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "forward" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "proxy_auth_to_parent" : {
+                  "description" : "proxy.config.http.forward.proxy_auth_to_parent: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "forward_connect_method" : {
+              "description" : "proxy.config.http.forward_connect_method: 0",
+              "type" : "integer"
+            },
+            "global_user_agent_header" : {
+              "description" : "proxy.config.http.global_user_agent_header: null",
+              "type" : "string"
+            },
+            "header_field_max_size" : {
+              "description" : "proxy.config.http.header_field_max_size: 32768",
+              "type" : "integer"
+            },
+            "host_sni_policy" : {
+              "description" : "proxy.config.http.host_sni_policy: 2",
+              "type" : "integer"
+            },
+            "insert_age_in_response" : {
+              "description" : "proxy.config.http.insert_age_in_response: 1",
+              "type" : "integer"
+            },
+            "insert_client_ip" : {
+              "description" : "proxy.config.http.insert_client_ip: 1",
+              "type" : "integer"
+            },
+            "insert_forwarded" : {
+              "description" : "proxy.config.http.insert_forwarded: none",
+              "type" : "string"
+            },
+            "insert_request_via_str" : {
+              "description" : "proxy.config.http.insert_request_via_str: 3",
+              "type" : "integer"
+            },
+            "insert_response_via_str" : {
+              "description" : "proxy.config.http.insert_response_via_str: 3",
+              "type" : "integer"
+            },
+            "insert_squid_x_forwarded_for" : {
+              "description" : "proxy.config.http.insert_squid_x_forwarded_for: 1",
+              "type" : "integer"
+            },
+            "keep_alive_enabled_in" : {
+              "description" : "proxy.config.http.keep_alive_enabled_in: 1",
+              "type" : "integer"
+            },
+            "keep_alive_enabled_out" : {
+              "description" : "proxy.config.http.keep_alive_enabled_out: 1",
+              "type" : "integer"
+            },
+            "keep_alive_no_activity_timeout_in" : {
+              "description" : "proxy.config.http.keep_alive_no_activity_timeout_in: 120",
+              "type" : "integer"
+            },
+            "keep_alive_no_activity_timeout_out" : {
+              "description" : "proxy.config.http.keep_alive_no_activity_timeout_out: 120",
+              "type" : "integer"
+            },
+            "keep_alive_post_out" : {
+              "description" : "proxy.config.http.keep_alive_post_out: 1",
+              "type" : "integer"
+            },
+            "max_post_size" : {
+              "description" : "proxy.config.http.max_post_size: 0",
+              "type" : "integer"
+            },
+            "max_proxy_cycles" : {
+              "description" : "proxy.config.http.max_proxy_cycles: 0",
+              "type" : "integer"
+            },
+            "negative_caching_enabled" : {
+              "description" : "proxy.config.http.negative_caching_enabled: 0",
+              "type" : "integer"
+            },
+            "negative_caching_lifetime" : {
+              "description" : "proxy.config.http.negative_caching_lifetime: 1800",
+              "type" : "integer"
+            },
+            "negative_caching_list" : {
+              "description" : "proxy.config.http.negative_caching_list: 204 305 403 404 414 500 501 502 503 504",
+              "type" : "string"
+            },
+            "negative_revalidating_enabled" : {
+              "description" : "proxy.config.http.negative_revalidating_enabled: 1",
+              "type" : "integer"
+            },
+            "negative_revalidating_lifetime" : {
+              "description" : "proxy.config.http.negative_revalidating_lifetime: 1800",
+              "type" : "integer"
+            },
+            "no_dns_just_forward_to_parent" : {
+              "description" : "proxy.config.http.no_dns_just_forward_to_parent: 0",
+              "type" : "integer"
+            },
+            "no_origin_server_dns" : {
+              "description" : "proxy.config.http.no_origin_server_dns: 0",
+              "type" : "integer"
+            },
+            "normalize_ae" : {
+              "description" : "proxy.config.http.normalize_ae: 1",
+              "type" : "integer"
+            },
+            "number_of_redirections" : {
+              "description" : "proxy.config.http.number_of_redirections: 0",
+              "type" : "integer"
+            },
+            "parent_proxies" : {
+              "description" : "proxy.config.http.parent_proxies: null",
+              "type" : "string"
+            },
+            "parent_proxy" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "disable_connect_tunneling" : {
+                  "description" : "proxy.config.http.parent_proxy.disable_connect_tunneling: 0",
+                  "type" : "integer"
+                },
+                "disable_parent_markdowns" : {
+                  "description" : "proxy.config.http.parent_proxy.disable_parent_markdowns: 0",
+                  "type" : "integer"
+                },
+                "enable_parent_timeout_markdowns" : {
+                  "description" : "proxy.config.http.parent_proxy.enable_parent_timeout_markdowns: 0",
+                  "type" : "integer"
+                },
+                "fail_threshold" : {
+                  "description" : "proxy.config.http.parent_proxy.fail_threshold: 10",
+                  "type" : "integer"
+                },
+                "file" : {
+                  "description" : "proxy.config.http.parent_proxy.file: parent.config",
+                  "type" : "string"
+                },
+                "mark_down_hostdb" : {
+                  "description" : "proxy.config.http.parent_proxy.mark_down_hostdb: 0",
+                  "type" : "integer"
+                },
+                "per_parent_connect_attempts" : {
+                  "description" : "proxy.config.http.parent_proxy.per_parent_connect_attempts: 2",
+                  "type" : "integer"
+                },
+                "retry_time" : {
+                  "description" : "proxy.config.http.parent_proxy.retry_time: 300",
+                  "type" : "integer"
+                },
+                "self_detect" : {
+                  "description" : "proxy.config.http.parent_proxy.self_detect: 2",
+                  "type" : "integer"
+                },
+                "total_connect_attempts" : {
+                  "description" : "proxy.config.http.parent_proxy.total_connect_attempts: 4",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "per_client" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "connection" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "alert_delay" : {
+                      "description" : "proxy.config.http.per_client.connection.alert_delay: 60",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "per_server" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "connection" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "alert_delay" : {
+                      "description" : "proxy.config.http.per_server.connection.alert_delay: 60",
+                      "type" : "integer"
+                    },
+                    "match" : {
+                      "description" : "proxy.config.http.per_server.connection.match: both",
+                      "type" : "string"
+                    },
+                    "max" : {
+                      "description" : "proxy.config.http.per_server.connection.max: 0",
+                      "type" : "integer"
+                    },
+                    "min" : {
+                      "description" : "proxy.config.http.per_server.connection.min: 0",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "post" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "check" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "content_length" : {
+                      "additionalProperties" : false,
+                      "properties" : {
+                        "enabled" : {
+                          "description" : "proxy.config.http.post.check.content_length.enabled: 1",
+                          "type" : "integer"
+                        }
+                      },
+                      "type" : "object"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "post_copy_size" : {
+              "description" : "proxy.config.http.post_copy_size: 2048",
+              "type" : "integer"
+            },
+            "proxy_protocol_allowlist" : {
+              "description" : "proxy.config.http.proxy_protocol_allowlist: none",
+              "type" : "string"
+            },
+            "proxy_protocol_out" : {
+              "description" : "proxy.config.http.proxy_protocol_out: -1",
+              "type" : "integer"
+            },
+            "push_method_enabled" : {
+              "description" : "proxy.config.http.push_method_enabled: 0",
+              "type" : "integer"
+            },
+            "redirect" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "actions" : {
+                  "description" : "proxy.config.http.redirect.actions: routable:follow",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "redirect_host_no_port" : {
+              "description" : "proxy.config.http.redirect_host_no_port: 1",
+              "type" : "integer"
+            },
+            "redirect_use_orig_cache_key" : {
+              "description" : "proxy.config.http.redirect_use_orig_cache_key: 0",
+              "type" : "integer"
+            },
+            "referer_default_redirect" : {
+              "description" : "proxy.config.http.referer_default_redirect: http://www.example.com/",
+              "type" : "string"
+            },
+            "referer_filter" : {
+              "description" : "proxy.config.http.referer_filter: 0",
+              "type" : "integer"
+            },
+            "referer_format_redirect" : {
+              "description" : "proxy.config.http.referer_format_redirect: 0",
+              "type" : "integer"
+            },
+            "request_buffer_enabled" : {
+              "description" : "proxy.config.http.request_buffer_enabled: 0",
+              "type" : "integer"
+            },
+            "request_header_max_size" : {
+              "description" : "proxy.config.http.request_header_max_size: 32768",
+              "type" : "integer"
+            },
+            "request_line_max_size" : {
+              "description" : "proxy.config.http.request_line_max_size: 65535",
+              "type" : "integer"
+            },
+            "request_via_str" : {
+              "description" : "proxy.config.http.request_via_str: ApacheTrafficServer/10.0.5",
+              "type" : "string"
+            },
+            "response_header_max_size" : {
+              "description" : "proxy.config.http.response_header_max_size: 32768",
+              "type" : "integer"
+            },
+            "response_server_enabled" : {
+              "description" : "proxy.config.http.response_server_enabled: 1",
+              "type" : "integer"
+            },
+            "response_server_str" : {
+              "description" : "proxy.config.http.response_server_str: ATS/10.0.5",
+              "type" : "string"
+            },
+            "response_via_str" : {
+              "description" : "proxy.config.http.response_via_str: ApacheTrafficServer/10.0.5",
+              "type" : "string"
+            },
+            "send_100_continue_response" : {
+              "description" : "proxy.config.http.send_100_continue_response: 0",
+              "type" : "integer"
+            },
+            "send_http11_requests" : {
+              "description" : "proxy.config.http.send_http11_requests: 1",
+              "type" : "integer"
+            },
+            "server_max_connections" : {
+              "description" : "proxy.config.http.server_max_connections: 0",
+              "type" : "integer"
+            },
+            "server_ports" : {
+              "description" : "proxy.config.http.server_ports: 8080 8080:ipv6",
+              "type" : "string"
+            },
+            "server_session_sharing" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "match" : {
+                  "description" : "proxy.config.http.server_session_sharing.match: both",
+                  "type" : "string"
+                },
+                "pool" : {
+                  "description" : "proxy.config.http.server_session_sharing.pool: thread",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "slow" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "log" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "threshold" : {
+                      "description" : "proxy.config.http.slow.log.threshold: 0",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "strict_chunk_parsing" : {
+              "description" : "proxy.config.http.strict_chunk_parsing: 1",
+              "type" : "integer"
+            },
+            "strict_uri_parsing" : {
+              "description" : "proxy.config.http.strict_uri_parsing: 2",
+              "type" : "integer"
+            },
+            "transaction_active_timeout_in" : {
+              "description" : "proxy.config.http.transaction_active_timeout_in: 900",
+              "type" : "integer"
+            },
+            "transaction_active_timeout_out" : {
+              "description" : "proxy.config.http.transaction_active_timeout_out: 3",
+              "type" : "integer"
+            },
+            "transaction_no_activity_timeout_in" : {
+              "description" : "proxy.config.http.transaction_no_activity_timeout_in: 30",
+              "type" : "integer"
+            },
+            "transaction_no_activity_timeout_out" : {
+              "description" : "proxy.config.http.transaction_no_activity_timeout_out: 2",
+              "type" : "integer"
+            },
+            "uncacheable_requests_bypass_parent" : {
+              "description" : "proxy.config.http.uncacheable_requests_bypass_parent: 1",
+              "type" : "integer"
+            },
+            "use_client_source_port" : {
+              "description" : "proxy.config.http.use_client_source_port: 0",
+              "type" : "integer"
+            },
+            "use_client_target_addr" : {
+              "description" : "proxy.config.http.use_client_target_addr: 0",
+              "type" : "integer"
+            },
+            "wait_for_cache" : {
+              "description" : "proxy.config.http.wait_for_cache: 0",
+              "type" : "integer"
+            },
+            "websocket" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "max_number_of_connections" : {
+                  "description" : "proxy.config.http.websocket.max_number_of_connections: -1",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "http2" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "accept_no_activity_timeout" : {
+              "description" : "proxy.config.http2.accept_no_activity_timeout: 120",
+              "type" : "integer"
+            },
+            "active_timeout_in" : {
+              "description" : "proxy.config.http2.active_timeout_in: 0",
+              "type" : "integer"
+            },
+            "connection" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "slow" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "log" : {
+                      "additionalProperties" : false,
+                      "properties" : {
+                        "threshold" : {
+                          "description" : "proxy.config.http2.connection.slow.log.threshold: 0",
+                          "type" : "integer"
+                        }
+                      },
+                      "type" : "object"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "default_buffer_water_mark" : {
+              "description" : "proxy.config.http2.default_buffer_water_mark: -1",
+              "type" : "integer"
+            },
+            "flow_control" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "policy_in" : {
+                  "description" : "proxy.config.http2.flow_control.policy_in: 0",
+                  "type" : "integer"
+                },
+                "policy_out" : {
+                  "description" : "proxy.config.http2.flow_control.policy_out: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "header_table_size" : {
+              "description" : "proxy.config.http2.header_table_size: 4096",
+              "type" : "integer"
+            },
+            "header_table_size_limit" : {
+              "description" : "proxy.config.http2.header_table_size_limit: 65536",
+              "type" : "integer"
+            },
+            "incomplete_header_timeout_in" : {
+              "description" : "proxy.config.http2.incomplete_header_timeout_in: 10",
+              "type" : "integer"
+            },
+            "initial_window_size_in" : {
+              "description" : "proxy.config.http2.initial_window_size_in: 65535",
+              "type" : "integer"
+            },
+            "initial_window_size_out" : {
+              "description" : "proxy.config.http2.initial_window_size_out: 65535",
+              "type" : "integer"
+            },
+            "max_active_streams_in" : {
+              "description" : "proxy.config.http2.max_active_streams_in: 0",
+              "type" : "integer"
+            },
+            "max_active_streams_out" : {
+              "description" : "proxy.config.http2.max_active_streams_out: 0",
+              "type" : "integer"
+            },
+            "max_concurrent_streams_in" : {
+              "description" : "proxy.config.http2.max_concurrent_streams_in: 100",
+              "type" : "integer"
+            },
+            "max_concurrent_streams_out" : {
+              "description" : "proxy.config.http2.max_concurrent_streams_out: 100",
+              "type" : "integer"
+            },
+            "max_continuation_frames_per_minute" : {
+              "description" : "proxy.config.http2.max_continuation_frames_per_minute: 120",
+              "type" : "integer"
+            },
+            "max_empty_frames_per_minute" : {
+              "description" : "proxy.config.http2.max_empty_frames_per_minute: 0",
+              "type" : "integer"
+            },
+            "max_frame_size" : {
+              "description" : "proxy.config.http2.max_frame_size: 16384",
+              "type" : "integer"
+            },
+            "max_header_list_size" : {
+              "description" : "proxy.config.http2.max_header_list_size: 32768",
+              "type" : "integer"
+            },
+            "max_ping_frames_per_minute" : {
+              "description" : "proxy.config.http2.max_ping_frames_per_minute: 60",
+              "type" : "integer"
+            },
+            "max_priority_frames_per_minute" : {
+              "description" : "proxy.config.http2.max_priority_frames_per_minute: 120",
+              "type" : "integer"
+            },
+            "max_rst_stream_frames_per_minute" : {
+              "description" : "proxy.config.http2.max_rst_stream_frames_per_minute: 200",
+              "type" : "integer"
+            },
+            "max_settings_frames_per_minute" : {
+              "description" : "proxy.config.http2.max_settings_frames_per_minute: 14",
+              "type" : "integer"
+            },
+            "max_settings_per_frame" : {
+              "description" : "proxy.config.http2.max_settings_per_frame: 7",
+              "type" : "integer"
+            },
+            "max_settings_per_minute" : {
+              "description" : "proxy.config.http2.max_settings_per_minute: 14",
+              "type" : "integer"
+            },
+            "min_avg_window_update" : {
+              "description" : "proxy.config.http2.min_avg_window_update: 2560",
+              "type" : "integer"
+            },
+            "min_concurrent_streams_in" : {
+              "description" : "proxy.config.http2.min_concurrent_streams_in: 10",
+              "type" : "integer"
+            },
+            "min_concurrent_streams_out" : {
+              "description" : "proxy.config.http2.min_concurrent_streams_out: 10",
+              "type" : "integer"
+            },
+            "no_activity_timeout_in" : {
+              "description" : "proxy.config.http2.no_activity_timeout_in: 120",
+              "type" : "integer"
+            },
+            "no_activity_timeout_out" : {
+              "description" : "proxy.config.http2.no_activity_timeout_out: 120",
+              "type" : "integer"
+            },
+            "push_diary_size" : {
+              "description" : "proxy.config.http2.push_diary_size: 256",
+              "type" : "integer"
+            },
+            "stream" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "slow" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "log" : {
+                      "additionalProperties" : false,
+                      "properties" : {
+                        "threshold" : {
+                          "description" : "proxy.config.http2.stream.slow.log.threshold: 0",
+                          "type" : "integer"
+                        }
+                      },
+                      "type" : "object"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "stream_error_rate_threshold" : {
+              "description" : "proxy.config.http2.stream_error_rate_threshold: 0.100000001",
+              "type" : "number"
+            },
+            "stream_error_sampling_threshold" : {
+              "description" : "proxy.config.http2.stream_error_sampling_threshold: 10",
+              "type" : "integer"
+            },
+            "stream_priority_enabled" : {
+              "description" : "proxy.config.http2.stream_priority_enabled: 0",
+              "type" : "integer"
+            },
+            "write_buffer_block_size" : {
+              "description" : "proxy.config.http2.write_buffer_block_size: 262144",
+              "type" : "integer"
+            },
+            "write_size_threshold" : {
+              "description" : "proxy.config.http2.write_size_threshold: 0.5",
+              "type" : "number"
+            },
+            "write_time_threshold" : {
+              "description" : "proxy.config.http2.write_time_threshold: 100",
+              "type" : "integer"
+            },
+            "zombie_debug_timeout_in" : {
+              "description" : "proxy.config.http2.zombie_debug_timeout_in: 0",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "http3" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "header_table_size" : {
+              "description" : "proxy.config.http3.header_table_size: 0",
+              "type" : "integer"
+            },
+            "max_field_section_size" : {
+              "description" : "proxy.config.http3.max_field_section_size: 4096",
+              "type" : "integer"
+            },
+            "max_settings" : {
+              "description" : "proxy.config.http3.max_settings: 10",
+              "type" : "integer"
+            },
+            "num_placeholders" : {
+              "description" : "proxy.config.http3.num_placeholders: 100",
+              "type" : "integer"
+            },
+            "qpack_blocked_streams" : {
+              "description" : "proxy.config.http3.qpack_blocked_streams: 0",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "incoming_ip_to_bind" : {
+          "description" : "proxy.config.incoming_ip_to_bind: null",
+          "type" : "string"
+        },
+        "jsonrpc" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "filename" : {
+              "description" : "proxy.config.jsonrpc.filename: jsonrpc.yaml",
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "local_state_dir" : {
+          "description" : "proxy.config.local_state_dir: var/trafficserver",
+          "type" : "string"
+        },
+        "log" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "ascii_buffer_size" : {
+              "description" : "proxy.config.log.ascii_buffer_size: 36864",
+              "type" : "integer"
+            },
+            "auto_delete_rolled_files" : {
+              "description" : "proxy.config.log.auto_delete_rolled_files: 1",
+              "type" : "integer"
+            },
+            "config" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "filename" : {
+                  "description" : "proxy.config.log.config.filename: logging.yaml",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "file_stat_frequency" : {
+              "description" : "proxy.config.log.file_stat_frequency: 32",
+              "type" : "integer"
+            },
+            "hostname" : {
+              "description" : "proxy.config.log.hostname: localhost",
+              "type" : "string"
+            },
+            "io" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "max_buffer_index" : {
+                  "description" : "proxy.config.log.io.max_buffer_index: 8",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "log_buffer_size" : {
+              "description" : "proxy.config.log.log_buffer_size: 9216",
+              "type" : "integer"
+            },
+            "log_fast_buffer" : {
+              "description" : "proxy.config.log.log_fast_buffer: 0",
+              "type" : "integer"
+            },
+            "logfile_dir" : {
+              "description" : "proxy.config.log.logfile_dir: var/log/trafficserver",
+              "type" : "string"
+            },
+            "logfile_perm" : {
+              "description" : "proxy.config.log.logfile_perm: rw-r--r--",
+              "type" : "string"
+            },
+            "logging_enabled" : {
+              "description" : "proxy.config.log.logging_enabled: 3",
+              "type" : "integer"
+            },
+            "max_line_size" : {
+              "description" : "proxy.config.log.max_line_size: 9216",
+              "type" : "integer"
+            },
+            "max_secs_per_buffer" : {
+              "description" : "proxy.config.log.max_secs_per_buffer: 5",
+              "type" : "integer"
+            },
+            "max_space_mb_for_logs" : {
+              "description" : "proxy.config.log.max_space_mb_for_logs: 25000",
+              "type" : "integer"
+            },
+            "max_space_mb_headroom" : {
+              "description" : "proxy.config.log.max_space_mb_headroom: 1000",
+              "type" : "integer"
+            },
+            "periodic_tasks_interval" : {
+              "description" : "proxy.config.log.periodic_tasks_interval: 5",
+              "type" : "integer"
+            },
+            "preproc_threads" : {
+              "description" : "proxy.config.log.preproc_threads: 1",
+              "type" : "integer"
+            },
+            "rolling_allow_empty" : {
+              "description" : "proxy.config.log.rolling_allow_empty: 0",
+              "type" : "integer"
+            },
+            "rolling_enabled" : {
+              "description" : "proxy.config.log.rolling_enabled: 1",
+              "type" : "integer"
+            },
+            "rolling_interval_sec" : {
+              "description" : "proxy.config.log.rolling_interval_sec: 86400",
+              "type" : "integer"
+            },
+            "rolling_max_count" : {
+              "description" : "proxy.config.log.rolling_max_count: 0",
+              "type" : "integer"
+            },
+            "rolling_min_count" : {
+              "description" : "proxy.config.log.rolling_min_count: 0",
+              "type" : "integer"
+            },
+            "rolling_offset_hr" : {
+              "description" : "proxy.config.log.rolling_offset_hr: 0",
+              "type" : "integer"
+            },
+            "rolling_size_mb" : {
+              "description" : "proxy.config.log.rolling_size_mb: 10",
+              "type" : "integer"
+            },
+            "sampling_frequency" : {
+              "description" : "proxy.config.log.sampling_frequency: 1",
+              "type" : "integer"
+            },
+            "space_used_frequency" : {
+              "description" : "proxy.config.log.space_used_frequency: 2",
+              "type" : "integer"
+            },
+            "throttling_interval_msec" : {
+              "description" : "proxy.config.log.throttling_interval_msec: 60000",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "memory" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "malloc_stats_print_opts" : {
+              "description" : "proxy.config.memory.malloc_stats_print_opts: ",
+              "type" : "string"
+            },
+            "max_usage" : {
+              "description" : "proxy.config.memory.max_usage: 0",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "mlock_enabled" : {
+          "description" : "proxy.config.mlock_enabled: 0",
+          "type" : "integer"
+        },
+        "msg" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "io" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "max_buffer_index" : {
+                  "description" : "proxy.config.msg.io.max_buffer_index: 8",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "net" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "accept_period" : {
+              "description" : "proxy.config.net.accept_period: 10",
+              "type" : "integer"
+            },
+            "additional_accepts" : {
+              "description" : "proxy.config.net.additional_accepts: -1",
+              "type" : "integer"
+            },
+            "connections_throttle" : {
+              "description" : "proxy.config.net.connections_throttle: 30000",
+              "type" : "integer"
+            },
+            "default_inactivity_timeout" : {
+              "description" : "proxy.config.net.default_inactivity_timeout: 86400",
+              "type" : "integer"
+            },
+            "defer_accept" : {
+              "description" : "proxy.config.net.defer_accept: 45",
+              "type" : "integer"
+            },
+            "event_period" : {
+              "description" : "proxy.config.net.event_period: 10",
+              "type" : "integer"
+            },
+            "inactivity_check_frequency" : {
+              "description" : "proxy.config.net.inactivity_check_frequency: 1",
+              "type" : "integer"
+            },
+            "listen_backlog" : {
+              "description" : "proxy.config.net.listen_backlog: -1",
+              "type" : "integer"
+            },
+            "max_connections_in" : {
+              "description" : "proxy.config.net.max_connections_in: 30000",
+              "type" : "integer"
+            },
+            "max_requests_in" : {
+              "description" : "proxy.config.net.max_requests_in: 0",
+              "type" : "integer"
+            },
+            "per_client" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "max_connections_in" : {
+                  "description" : "proxy.config.net.per_client.max_connections_in: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "poll_timeout" : {
+              "description" : "proxy.config.net.poll_timeout: 10",
+              "type" : "integer"
+            },
+            "retry_delay" : {
+              "description" : "proxy.config.net.retry_delay: 10",
+              "type" : "integer"
+            },
+            "sock_mss_in" : {
+              "description" : "proxy.config.net.sock_mss_in: 0",
+              "type" : "integer"
+            },
+            "sock_notsent_lowat" : {
+              "description" : "proxy.config.net.sock_notsent_lowat: 32768",
+              "type" : "integer"
+            },
+            "sock_option_flag_in" : {
+              "description" : "proxy.config.net.sock_option_flag_in: 1",
+              "type" : "integer"
+            },
+            "sock_option_flag_out" : {
+              "description" : "proxy.config.net.sock_option_flag_out: 1",
+              "type" : "integer"
+            },
+            "sock_option_tfo_queue_size_in" : {
+              "description" : "proxy.config.net.sock_option_tfo_queue_size_in: 10000",
+              "type" : "integer"
+            },
+            "sock_packet_mark_in" : {
+              "description" : "proxy.config.net.sock_packet_mark_in: 0",
+              "type" : "integer"
+            },
+            "sock_packet_mark_out" : {
+              "description" : "proxy.config.net.sock_packet_mark_out: 0",
+              "type" : "integer"
+            },
+            "sock_packet_tos_in" : {
+              "description" : "proxy.config.net.sock_packet_tos_in: 0",
+              "type" : "integer"
+            },
+            "sock_packet_tos_out" : {
+              "description" : "proxy.config.net.sock_packet_tos_out: 0",
+              "type" : "integer"
+            },
+            "sock_recv_buffer_size_in" : {
+              "description" : "proxy.config.net.sock_recv_buffer_size_in: 0",
+              "type" : "integer"
+            },
+            "sock_recv_buffer_size_out" : {
+              "description" : "proxy.config.net.sock_recv_buffer_size_out: 0",
+              "type" : "integer"
+            },
+            "sock_send_buffer_size_in" : {
+              "description" : "proxy.config.net.sock_send_buffer_size_in: 0",
+              "type" : "integer"
+            },
+            "sock_send_buffer_size_out" : {
+              "description" : "proxy.config.net.sock_send_buffer_size_out: 0",
+              "type" : "integer"
+            },
+            "tcp_congestion_control_in" : {
+              "description" : "proxy.config.net.tcp_congestion_control_in: ",
+              "type" : "string"
+            },
+            "tcp_congestion_control_out" : {
+              "description" : "proxy.config.net.tcp_congestion_control_out: ",
+              "type" : "string"
+            },
+            "throttle_delay" : {
+              "description" : "proxy.config.net.throttle_delay: 50",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "outgoing_ip_to_bind" : {
+          "description" : "proxy.config.outgoing_ip_to_bind: null",
+          "type" : "string"
+        },
+        "output" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "logfile" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "name" : {
+                  "description" : "proxy.config.output.logfile.name: traffic.out",
+                  "type" : "string"
+                },
+                "rolling_enabled" : {
+                  "description" : "proxy.config.output.logfile.rolling_enabled: 0",
+                  "type" : "integer"
+                },
+                "rolling_interval_sec" : {
+                  "description" : "proxy.config.output.logfile.rolling_interval_sec: 3600",
+                  "type" : "integer"
+                },
+                "rolling_min_count" : {
+                  "description" : "proxy.config.output.logfile.rolling_min_count: 0",
+                  "type" : "integer"
+                },
+                "rolling_size_mb" : {
+                  "description" : "proxy.config.output.logfile.rolling_size_mb: 100",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "logfile_perm" : {
+              "description" : "proxy.config.output.logfile_perm: rw-r--r--",
+              "type" : "string"
+            }
+          },
+          "type" : "object"
+        },
+        "payload" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "io" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "max_buffer_index" : {
+                  "description" : "proxy.config.payload.io.max_buffer_index: 8",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "plugin" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "compiler_path" : {
+              "description" : "proxy.config.plugin.compiler_path: ",
+              "type" : "string"
+            },
+            "dynamic_reload_mode" : {
+              "description" : "proxy.config.plugin.dynamic_reload_mode: 1",
+              "type" : "integer"
+            },
+            "load_elevated" : {
+              "description" : "proxy.config.plugin.load_elevated: 0",
+              "type" : "integer"
+            },
+            "plugin_dir" : {
+              "description" : "proxy.config.plugin.plugin_dir: libexec/trafficserver",
+              "type" : "string"
+            },
+            "vc" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "default_buffer_index" : {
+                  "description" : "proxy.config.plugin.vc.default_buffer_index: 8",
+                  "type" : "integer"
+                },
+                "default_buffer_water_mark" : {
+                  "description" : "proxy.config.plugin.vc.default_buffer_water_mark: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "product_company" : {
+          "description" : "proxy.config.product_company: Apache Software Foundation",
+          "type" : "string"
+        },
+        "product_name" : {
+          "description" : "proxy.config.product_name: Traffic Server",
+          "type" : "string"
+        },
+        "product_vendor" : {
+          "description" : "proxy.config.product_vendor: Apache",
+          "type" : "string"
+        },
+        "proxy_name" : {
+          "description" : "proxy.config.proxy_name: traffic_server",
+          "type" : "string"
+        },
+        "quic" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "ack_delay_exponent_in" : {
+              "description" : "proxy.config.quic.ack_delay_exponent_in: 3",
+              "type" : "integer"
+            },
+            "ack_delay_exponent_out" : {
+              "description" : "proxy.config.quic.ack_delay_exponent_out: 3",
+              "type" : "integer"
+            },
+            "active_cid_limit_in" : {
+              "description" : "proxy.config.quic.active_cid_limit_in: 2",
+              "type" : "integer"
+            },
+            "active_cid_limit_out" : {
+              "description" : "proxy.config.quic.active_cid_limit_out: 8",
+              "type" : "integer"
+            },
+            "cc_algorithm" : {
+              "description" : "proxy.config.quic.cc_algorithm: 0",
+              "type" : "integer"
+            },
+            "client" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "cm_exercise_enabled" : {
+                  "description" : "proxy.config.quic.client.cm_exercise_enabled: 0",
+                  "type" : "integer"
+                },
+                "quantum_readiness_test_enabled" : {
+                  "description" : "proxy.config.quic.client.quantum_readiness_test_enabled: 0",
+                  "type" : "integer"
+                },
+                "session_file" : {
+                  "description" : "proxy.config.quic.client.session_file: null",
+                  "type" : "string"
+                },
+                "supported_groups" : {
+                  "description" : "proxy.config.quic.client.supported_groups: P-256:X25519:P-384:P-521",
+                  "type" : "string"
+                },
+                "vn_exercise_enabled" : {
+                  "description" : "proxy.config.quic.client.vn_exercise_enabled: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "connection_table" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "size" : {
+                  "description" : "proxy.config.quic.connection_table.size: 65521",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "disable_active_migration" : {
+              "description" : "proxy.config.quic.disable_active_migration: 0",
+              "type" : "integer"
+            },
+            "disable_http_0_9" : {
+              "description" : "proxy.config.quic.disable_http_0_9: 1",
+              "type" : "integer"
+            },
+            "initial_max_data_in" : {
+              "description" : "proxy.config.quic.initial_max_data_in: 65536",
+              "type" : "integer"
+            },
+            "initial_max_data_out" : {
+              "description" : "proxy.config.quic.initial_max_data_out: 65536",
+              "type" : "integer"
+            },
+            "initial_max_stream_data_bidi_local_in" : {
+              "description" : "proxy.config.quic.initial_max_stream_data_bidi_local_in: 0",
+              "type" : "integer"
+            },
+            "initial_max_stream_data_bidi_local_out" : {
+              "description" : "proxy.config.quic.initial_max_stream_data_bidi_local_out: 4096",
+              "type" : "integer"
+            },
+            "initial_max_stream_data_bidi_remote_in" : {
+              "description" : "proxy.config.quic.initial_max_stream_data_bidi_remote_in: 4096",
+              "type" : "integer"
+            },
+            "initial_max_stream_data_bidi_remote_out" : {
+              "description" : "proxy.config.quic.initial_max_stream_data_bidi_remote_out: 0",
+              "type" : "integer"
+            },
+            "initial_max_stream_data_uni_in" : {
+              "description" : "proxy.config.quic.initial_max_stream_data_uni_in: 4096",
+              "type" : "integer"
+            },
+            "initial_max_stream_data_uni_out" : {
+              "description" : "proxy.config.quic.initial_max_stream_data_uni_out: 4096",
+              "type" : "integer"
+            },
+            "initial_max_streams_bidi_in" : {
+              "description" : "proxy.config.quic.initial_max_streams_bidi_in: 100",
+              "type" : "integer"
+            },
+            "initial_max_streams_bidi_out" : {
+              "description" : "proxy.config.quic.initial_max_streams_bidi_out: 100",
+              "type" : "integer"
+            },
+            "initial_max_streams_uni_in" : {
+              "description" : "proxy.config.quic.initial_max_streams_uni_in: 100",
+              "type" : "integer"
+            },
+            "initial_max_streams_uni_out" : {
+              "description" : "proxy.config.quic.initial_max_streams_uni_out: 100",
+              "type" : "integer"
+            },
+            "instance_id" : {
+              "description" : "proxy.config.quic.instance_id: 0",
+              "type" : "integer"
+            },
+            "max_ack_delay_in" : {
+              "description" : "proxy.config.quic.max_ack_delay_in: 25",
+              "type" : "integer"
+            },
+            "max_ack_delay_out" : {
+              "description" : "proxy.config.quic.max_ack_delay_out: 25",
+              "type" : "integer"
+            },
+            "max_recv_udp_payload_size_in" : {
+              "description" : "proxy.config.quic.max_recv_udp_payload_size_in: 65527",
+              "type" : "integer"
+            },
+            "max_recv_udp_payload_size_out" : {
+              "description" : "proxy.config.quic.max_recv_udp_payload_size_out: 65527",
+              "type" : "integer"
+            },
+            "max_send_udp_payload_size_in" : {
+              "description" : "proxy.config.quic.max_send_udp_payload_size_in: 65527",
+              "type" : "integer"
+            },
+            "max_send_udp_payload_size_out" : {
+              "description" : "proxy.config.quic.max_send_udp_payload_size_out: 65527",
+              "type" : "integer"
+            },
+            "no_activity_timeout_in" : {
+              "description" : "proxy.config.quic.no_activity_timeout_in: 30000",
+              "type" : "integer"
+            },
+            "no_activity_timeout_out" : {
+              "description" : "proxy.config.quic.no_activity_timeout_out: 30000",
+              "type" : "integer"
+            },
+            "num_alt_connection_ids" : {
+              "description" : "proxy.config.quic.num_alt_connection_ids: 8",
+              "type" : "integer"
+            },
+            "preferred_address_ipv4" : {
+              "description" : "proxy.config.quic.preferred_address_ipv4: null",
+              "type" : "string"
+            },
+            "preferred_address_ipv6" : {
+              "description" : "proxy.config.quic.preferred_address_ipv6: null",
+              "type" : "string"
+            },
+            "qlog" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "file_base" : {
+                  "description" : "proxy.config.quic.qlog.file_base: null",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "server" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "quantum_readiness_test_enabled" : {
+                  "description" : "proxy.config.quic.server.quantum_readiness_test_enabled: 0",
+                  "type" : "integer"
+                },
+                "stateless_retry_enabled" : {
+                  "description" : "proxy.config.quic.server.stateless_retry_enabled: 0",
+                  "type" : "integer"
+                },
+                "supported_groups" : {
+                  "description" : "proxy.config.quic.server.supported_groups: P-256:X25519:P-384:P-521",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "raw_stat_sync_interval_ms" : {
+          "description" : "proxy.config.raw_stat_sync_interval_ms: 5000",
+          "type" : "integer"
+        },
+        "remote_sync_interval_ms" : {
+          "description" : "proxy.config.remote_sync_interval_ms: 5000",
+          "type" : "integer"
+        },
+        "res_track_memory" : {
+          "description" : "proxy.config.res_track_memory: 0",
+          "type" : "integer"
+        },
+        "restart" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "stop_listening" : {
+              "description" : "proxy.config.restart.stop_listening: 0",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "reverse_proxy" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "enabled" : {
+              "description" : "proxy.config.reverse_proxy.enabled: 1",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "socks" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "accept_enabled" : {
+              "description" : "proxy.config.socks.accept_enabled: 0",
+              "type" : "integer"
+            },
+            "accept_port" : {
+              "description" : "proxy.config.socks.accept_port: 1080",
+              "type" : "integer"
+            },
+            "connection_attempts" : {
+              "description" : "proxy.config.socks.connection_attempts: 4",
+              "type" : "integer"
+            },
+            "default_servers" : {
+              "description" : "proxy.config.socks.default_servers: ",
+              "type" : "string"
+            },
+            "http_port" : {
+              "description" : "proxy.config.socks.http_port: 80",
+              "type" : "integer"
+            },
+            "per_server_connection_attempts" : {
+              "description" : "proxy.config.socks.per_server_connection_attempts: 1",
+              "type" : "integer"
+            },
+            "server_connect_timeout" : {
+              "description" : "proxy.config.socks.server_connect_timeout: 10",
+              "type" : "integer"
+            },
+            "server_fail_threshold" : {
+              "description" : "proxy.config.socks.server_fail_threshold: 2",
+              "type" : "integer"
+            },
+            "server_retry_time" : {
+              "description" : "proxy.config.socks.server_retry_time: 300",
+              "type" : "integer"
+            },
+            "server_retry_timeout" : {
+              "description" : "proxy.config.socks.server_retry_timeout: 300",
+              "type" : "integer"
+            },
+            "socks_config_file" : {
+              "description" : "proxy.config.socks.socks_config_file: socks.config",
+              "type" : "string"
+            },
+            "socks_needed" : {
+              "description" : "proxy.config.socks.socks_needed: 0",
+              "type" : "integer"
+            },
+            "socks_timeout" : {
+              "description" : "proxy.config.socks.socks_timeout: 100",
+              "type" : "integer"
+            },
+            "socks_version" : {
+              "description" : "proxy.config.socks.socks_version: 4",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "srv_enabled" : {
+          "description" : "proxy.config.srv_enabled: 0",
+          "type" : "integer"
+        },
+        "ssl" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "CA" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "cert" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "filename" : {
+                      "description" : "proxy.config.ssl.CA.cert.filename: null",
+                      "type" : "string"
+                    },
+                    "path" : {
+                      "description" : "proxy.config.ssl.CA.cert.path: etc/trafficserver",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "TLSv1" : {
+              "description" : "proxy.config.ssl.TLSv1: 0",
+              "type" : "integer"
+            },
+            "TLSv1_1" : {
+              "description" : "proxy.config.ssl.TLSv1_1: 0",
+              "type" : "integer"
+            },
+            "TLSv1_2" : {
+              "description" : "proxy.config.ssl.TLSv1_2: 1",
+              "type" : "integer"
+            },
+            "TLSv1_3" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "enabled" : {
+                  "description" : "proxy.config.ssl.TLSv1_3.enabled: 1",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "allow_client_renegotiation" : {
+              "description" : "proxy.config.ssl.allow_client_renegotiation: 0",
+              "type" : "integer"
+            },
+            "async" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "handshake" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "enabled" : {
+                      "description" : "proxy.config.ssl.async.handshake.enabled: 0",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "cert" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "load_elevated" : {
+                  "description" : "proxy.config.ssl.cert.load_elevated: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "client" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "CA" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "cert" : {
+                      "additionalProperties" : false,
+                      "properties" : {
+                        "filename" : {
+                          "description" : "proxy.config.ssl.client.CA.cert.filename: null",
+                          "type" : "string"
+                        },
+                        "path" : {
+                          "description" : "proxy.config.ssl.client.CA.cert.path: etc/trafficserver",
+                          "type" : "string"
+                        }
+                      },
+                      "type" : "object"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "TLSv1" : {
+                  "description" : "proxy.config.ssl.client.TLSv1: 0",
+                  "type" : "integer"
+                },
+                "TLSv1_1" : {
+                  "description" : "proxy.config.ssl.client.TLSv1_1: 0",
+                  "type" : "integer"
+                },
+                "TLSv1_2" : {
+                  "description" : "proxy.config.ssl.client.TLSv1_2: 1",
+                  "type" : "integer"
+                },
+                "TLSv1_3" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "cipher_suites" : {
+                      "description" : "proxy.config.ssl.client.TLSv1_3.cipher_suites: TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256",
+                      "type" : "string"
+                    },
+                    "enabled" : {
+                      "description" : "proxy.config.ssl.client.TLSv1_3.enabled: 1",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "alpn_protocols" : {
+                  "description" : "proxy.config.ssl.client.alpn_protocols: null",
+                  "type" : "string"
+                },
+                "cert" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "filename" : {
+                      "description" : "proxy.config.ssl.client.cert.filename: null",
+                      "type" : "string"
+                    },
+                    "path" : {
+                      "description" : "proxy.config.ssl.client.cert.path: etc/trafficserver",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "certification_level" : {
+                  "description" : "proxy.config.ssl.client.certification_level: 0",
+                  "type" : "integer"
+                },
+                "cipher_suite" : {
+                  "description" : "proxy.config.ssl.client.cipher_suite: ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-DSS-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-CCM8:ECDHE-ECDSA-AES256-CCM:DHE-RSA-AES256-CCM8:DHE-RSA-AES256-CCM:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-ARIA256-GCM-SHA384:ECDHE-ARIA256-GCM-SHA384:DHE-DSS-ARIA256-GCM-SHA384:DHE-RSA-ARIA256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA256:ECDHE-ECDSA-CAMELLIA256-SHA384:ECDHE-RSA-CAMELLIA256-SHA384:DHE-RSA-CAMELLIA256-SHA256:DHE-DSS-CAMELLIA256-SHA256:RSA-PSK-AES256-GCM-SHA384:RSA-PSK-CHACHA20-POLY1305:RSA-PSK-ARIA256-GCM-SHA384:AES256-GCM-SHA384:AES256-CCM8:AES256-CCM:ARIA256-GCM-SHA384:AES256-SHA256:CAMELLIA256-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:DHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-CCM8:ECDHE-ECDSA-AES128-CCM:DHE-RSA-AES128-CCM8:DHE-RSA-AES128-CCM:ECDHE-ECDSA-ARIA128-GCM-SHA256:ECDHE-ARIA128-GCM-SHA256:DHE-DSS-ARIA128-GCM-SHA256:DHE-RSA-ARIA128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:DHE-DSS-AES128-SHA256:ECDHE-ECDSA-CAMELLIA128-SHA256:ECDHE-RSA-CAMELLIA128-SHA256:DHE-RSA-CAMELLIA128-SHA256:DHE-DSS-CAMELLIA128-SHA256:RSA-PSK-AES128-GCM-SHA256:RSA-PSK-ARIA128-GCM-SHA256:AES128-GCM-SHA256:AES128-CCM8:AES128-CCM:ARIA128-GCM-SHA256:AES128-SHA256:CAMELLIA128-SHA256",
+                  "type" : "string"
+                },
+                "groups_list" : {
+                  "description" : "proxy.config.ssl.client.groups_list: null",
+                  "type" : "string"
+                },
+                "private_key" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "filename" : {
+                      "description" : "proxy.config.ssl.client.private_key.filename: null",
+                      "type" : "string"
+                    },
+                    "path" : {
+                      "description" : "proxy.config.ssl.client.private_key.path: etc/trafficserver",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "scheme_proto_mismatch_policy" : {
+                  "description" : "proxy.config.ssl.client.scheme_proto_mismatch_policy: 2",
+                  "type" : "integer"
+                },
+                "sni_policy" : {
+                  "description" : "proxy.config.ssl.client.sni_policy: host",
+                  "type" : "string"
+                },
+                "verify" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "server" : {
+                      "additionalProperties" : false,
+                      "properties" : {
+                        "policy" : {
+                          "description" : "proxy.config.ssl.client.verify.server.policy: PERMISSIVE",
+                          "type" : "string"
+                        },
+                        "properties" : {
+                          "description" : "proxy.config.ssl.client.verify.server.properties: ALL",
+                          "type" : "string"
+                        }
+                      },
+                      "type" : "object"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "version" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "max" : {
+                      "description" : "proxy.config.ssl.client.version.max: -1",
+                      "type" : "integer"
+                    },
+                    "min" : {
+                      "description" : "proxy.config.ssl.client.version.min: -1",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "engine" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "conf_file" : {
+                  "description" : "proxy.config.ssl.engine.conf_file: null",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "handshake_timeout_in" : {
+              "description" : "proxy.config.ssl.handshake_timeout_in: 30",
+              "type" : "integer"
+            },
+            "hsts_include_subdomains" : {
+              "description" : "proxy.config.ssl.hsts_include_subdomains: 0",
+              "type" : "integer"
+            },
+            "hsts_max_age" : {
+              "description" : "proxy.config.ssl.hsts_max_age: -1",
+              "type" : "integer"
+            },
+            "keylog_file" : {
+              "description" : "proxy.config.ssl.keylog_file: null",
+              "type" : "string"
+            },
+            "ktls" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "enabled" : {
+                  "description" : "proxy.config.ssl.ktls.enabled: 0",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "max_record_size" : {
+              "description" : "proxy.config.ssl.max_record_size: 0",
+              "type" : "integer"
+            },
+            "misc" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "io" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "max_buffer_index" : {
+                      "description" : "proxy.config.ssl.misc.io.max_buffer_index: 8",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "ocsp" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "cache_timeout" : {
+                  "description" : "proxy.config.ssl.ocsp.cache_timeout: 3600",
+                  "type" : "integer"
+                },
+                "enabled" : {
+                  "description" : "proxy.config.ssl.ocsp.enabled: 0",
+                  "type" : "integer"
+                },
+                "request_mode" : {
+                  "description" : "proxy.config.ssl.ocsp.request_mode: 0",
+                  "type" : "integer"
+                },
+                "request_timeout" : {
+                  "description" : "proxy.config.ssl.ocsp.request_timeout: 10",
+                  "type" : "integer"
+                },
+                "response" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "path" : {
+                      "description" : "proxy.config.ssl.ocsp.response.path: etc/trafficserver",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "update_period" : {
+                  "description" : "proxy.config.ssl.ocsp.update_period: 60",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "origin_session_cache" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "enabled" : {
+                  "description" : "proxy.config.ssl.origin_session_cache.enabled: 1",
+                  "type" : "integer"
+                },
+                "size" : {
+                  "description" : "proxy.config.ssl.origin_session_cache.size: 10240",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "server" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "TLSv1_3" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "cipher_suites" : {
+                      "description" : "proxy.config.ssl.server.TLSv1_3.cipher_suites: TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "allow_early_data_params" : {
+                  "description" : "proxy.config.ssl.server.allow_early_data_params: 0",
+                  "type" : "integer"
+                },
+                "cert" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "path" : {
+                      "description" : "proxy.config.ssl.server.cert.path: etc/trafficserver",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "cert_chain" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "filename" : {
+                      "description" : "proxy.config.ssl.server.cert_chain.filename: null",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "cipher_suite" : {
+                  "description" : "proxy.config.ssl.server.cipher_suite: ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-CCM:ECDHE-ECDSA-AES128-CCM:ECDHE-ECDSA-AES256-CCM8:ECDHE-ECDSA-AES128-CCM8:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-CCM8:DHE-RSA-AES128-CCM8:DHE-RSA-AES256-CCM:DHE-RSA-AES128-CCM:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-CCM8:AES128-CCM8:AES256-CCM:AES128-CCM:AES256-SHA256:AES128-SHA2",
+                  "type" : "string"
+                },
+                "dhparams_file" : {
+                  "description" : "proxy.config.ssl.server.dhparams_file: null",
+                  "type" : "string"
+                },
+                "groups_list" : {
+                  "description" : "proxy.config.ssl.server.groups_list: null",
+                  "type" : "string"
+                },
+                "honor_cipher_order" : {
+                  "description" : "proxy.config.ssl.server.honor_cipher_order: 1",
+                  "type" : "integer"
+                },
+                "max_early_data" : {
+                  "description" : "proxy.config.ssl.server.max_early_data: 0",
+                  "type" : "integer"
+                },
+                "multicert" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "exit_on_load_fail" : {
+                      "description" : "proxy.config.ssl.server.multicert.exit_on_load_fail: 1",
+                      "type" : "integer"
+                    },
+                    "filename" : {
+                      "description" : "proxy.config.ssl.server.multicert.filename: ssl_multicert.config",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "prioritize_chacha" : {
+                  "description" : "proxy.config.ssl.server.prioritize_chacha: 0",
+                  "type" : "integer"
+                },
+                "private_key" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "path" : {
+                      "description" : "proxy.config.ssl.server.private_key.path: etc/trafficserver",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "session_ticket" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "enable" : {
+                      "description" : "proxy.config.ssl.server.session_ticket.enable: 1",
+                      "type" : "integer"
+                    },
+                    "number" : {
+                      "description" : "proxy.config.ssl.server.session_ticket.number: 2",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "ticket_key" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "filename" : {
+                      "description" : "proxy.config.ssl.server.ticket_key.filename: null",
+                      "type" : "string"
+                    }
+                  },
+                  "type" : "object"
+                },
+                "version" : {
+                  "additionalProperties" : false,
+                  "properties" : {
+                    "max" : {
+                      "description" : "proxy.config.ssl.server.version.max: -1",
+                      "type" : "integer"
+                    },
+                    "min" : {
+                      "description" : "proxy.config.ssl.server.version.min: -1",
+                      "type" : "integer"
+                    }
+                  },
+                  "type" : "object"
+                }
+              },
+              "type" : "object"
+            },
+            "servername" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "filename" : {
+                  "description" : "proxy.config.ssl.servername.filename: sni.yaml",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            },
+            "session_cache" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "auto_clear" : {
+                  "description" : "proxy.config.ssl.session_cache.auto_clear: 1",
+                  "type" : "integer"
+                },
+                "num_buckets" : {
+                  "description" : "proxy.config.ssl.session_cache.num_buckets: 256",
+                  "type" : "integer"
+                },
+                "size" : {
+                  "description" : "proxy.config.ssl.session_cache.size: 102400",
+                  "type" : "integer"
+                },
+                "skip_cache_on_bucket_contention" : {
+                  "description" : "proxy.config.ssl.session_cache.skip_cache_on_bucket_contention: 0",
+                  "type" : "integer"
+                },
+                "timeout" : {
+                  "description" : "proxy.config.ssl.session_cache.timeout: 0",
+                  "type" : "integer"
+                },
+                "value" : {
+                  "description" : "proxy.config.ssl.session_cache.value: 2",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "stop" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "shutdown_timeout" : {
+              "description" : "proxy.config.stop.shutdown_timeout: 0",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "syslog_facility" : {
+          "description" : "proxy.config.syslog_facility: LOG_DAEMON",
+          "type" : "string"
+        },
+        "system" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "file_max_pct" : {
+              "description" : "proxy.config.system.file_max_pct: 0.899999976",
+              "type" : "number"
+            }
+          },
+          "type" : "object"
+        },
+        "system_clock" : {
+          "description" : "proxy.config.system_clock: 0",
+          "type" : "integer"
+        },
+        "task_threads" : {
+          "description" : "proxy.config.task_threads: 2",
+          "type" : "integer"
+        },
+        "thread" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "default" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "stackguard_pages" : {
+                  "description" : "proxy.config.thread.default.stackguard_pages: 1",
+                  "type" : "integer"
+                },
+                "stacksize" : {
+                  "description" : "proxy.config.thread.default.stacksize: 1048576",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            },
+            "max_heartbeat_mseconds" : {
+              "description" : "proxy.config.thread.max_heartbeat_mseconds: 60",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "tunnel" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "activity_check_period" : {
+              "description" : "proxy.config.tunnel.activity_check_period: 0",
+              "type" : "integer"
+            },
+            "prewarm" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "algorithm" : {
+                  "description" : "proxy.config.tunnel.prewarm.algorithm: 2",
+                  "type" : "integer"
+                },
+                "enabled" : {
+                  "description" : "proxy.config.tunnel.prewarm.enabled: 0",
+                  "type" : "integer"
+                },
+                "event_period" : {
+                  "description" : "proxy.config.tunnel.prewarm.event_period: 1000",
+                  "type" : "integer"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "udp" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "enable_gro" : {
+              "description" : "proxy.config.udp.enable_gro: 1",
+              "type" : "integer"
+            },
+            "enable_gso" : {
+              "description" : "proxy.config.udp.enable_gso: 1",
+              "type" : "integer"
+            },
+            "free_cancelled_pkts_sec" : {
+              "description" : "proxy.config.udp.free_cancelled_pkts_sec: 10",
+              "type" : "integer"
+            },
+            "periodic_cleanup" : {
+              "description" : "proxy.config.udp.periodic_cleanup: 10",
+              "type" : "integer"
+            },
+            "poll_timeout" : {
+              "description" : "proxy.config.udp.poll_timeout: 100",
+              "type" : "integer"
+            },
+            "send_retries" : {
+              "description" : "proxy.config.udp.send_retries: 0",
+              "type" : "integer"
+            },
+            "threads" : {
+              "description" : "proxy.config.udp.threads: 0",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        },
+        "url_remap" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "acl_behavior_policy" : {
+              "description" : "proxy.config.url_remap.acl_behavior_policy: 0",
+              "type" : "integer"
+            },
+            "filename" : {
+              "description" : "proxy.config.url_remap.filename: remap.config",
+              "type" : "string"
+            },
+            "min_rules_required" : {
+              "description" : "proxy.config.url_remap.min_rules_required: 0",
+              "type" : "integer"
+            },
+            "pristine_host_hdr" : {
+              "description" : "proxy.config.url_remap.pristine_host_hdr: 0",
+              "type" : "integer"
+            },
+            "remap_required" : {
+              "description" : "proxy.config.url_remap.remap_required: 0",
+              "type" : "integer"
+            },
+            "strategies" : {
+              "additionalProperties" : false,
+              "properties" : {
+                "filename" : {
+                  "description" : "proxy.config.url_remap.strategies.filename: strategies.yaml",
+                  "type" : "string"
+                }
+              },
+              "type" : "object"
+            }
+          },
+          "type" : "object"
+        },
+        "websocket" : {
+          "additionalProperties" : false,
+          "properties" : {
+            "active_timeout" : {
+              "description" : "proxy.config.websocket.active_timeout: 3600",
+              "type" : "integer"
+            },
+            "no_activity_timeout" : {
+              "description" : "proxy.config.websocket.no_activity_timeout: 600",
+              "type" : "integer"
+            }
+          },
+          "type" : "object"
+        }
+      },
+      "type" : "object"
+    }
+  },
+  "type" : "object"
+}

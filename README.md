@@ -117,6 +117,36 @@ Usage:
 while :; do http --print=hb localhost:31080 X-Debug:X-Cache | ./tools/http-out-format.pl; sleep 2; done
 ```
 
+## tools/gen-records-schema.pl
+
+Generates a JSON Schema from the live ATS configuration (`traffic_ctl config match '.*'`).
+The schema can be used to validate `records.yaml` files — e.g. with `pajv` — and will report
+unknown keys (typos, removed/renamed records) as errors.
+
+Regenerate schemas for L1 and L2:
+
+```bash
+./kubectl.sh exec -n ats statefulset/apache-traffic-server-l1 -- \
+  traffic_ctl config match '.*' | perl tools/gen-records-schema.pl \
+  > manifest/ats/l1/files/records.schema.json
+
+./kubectl.sh exec -n ats statefulset/apache-traffic-server-l2 -- \
+  traffic_ctl config match '.*' | perl tools/gen-records-schema.pl \
+  > manifest/ats/l2/files/records.schema.json
+```
+
+Validate a `records.yaml` against the schema:
+
+```bash
+npx -y pajv -s manifest/ats/l2/files/records.schema.json -d manifest/ats/l2/files/records.yaml
+```
+
+To enable inline VS Code validation, add the following comment at the top of the `records.yaml` file:
+
+```yaml
+# yaml-language-server: $schema=./records.schema.json
+```
+
 ## CLI wrappers
 
 Use local wrappers instead of raw `flux`, `kubectl`, and `helm` commands:
