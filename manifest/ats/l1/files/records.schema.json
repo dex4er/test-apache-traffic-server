@@ -353,7 +353,7 @@
                   "type" : "integer"
                 },
                 "tags" : {
-                  "description" : "proxy.config.diags.debug.tags: http|dns|cache",
+                  "description" : "proxy.config.diags.debug.tags: http|dns",
                   "type" : "string"
                 },
                 "throttling_interval_msec" : {
@@ -779,11 +779,11 @@
                   "type" : "number"
                 },
                 "heuristic_max_lifetime" : {
-                  "description" : "proxy.config.http.cache.heuristic_max_lifetime: 60",
+                  "description" : "proxy.config.http.cache.heuristic_max_lifetime: 86400",
                   "type" : "integer"
                 },
                 "heuristic_min_lifetime" : {
-                  "description" : "proxy.config.http.cache.heuristic_min_lifetime: 10",
+                  "description" : "proxy.config.http.cache.heuristic_min_lifetime: 3600",
                   "type" : "integer"
                 },
                 "http" : {
@@ -843,7 +843,7 @@
                   "type" : "integer"
                 },
                 "max_stale_age" : {
-                  "description" : "proxy.config.http.cache.max_stale_age: 300",
+                  "description" : "proxy.config.http.cache.max_stale_age: 604800",
                   "type" : "integer"
                 },
                 "open_read_retry_time" : {
@@ -1042,11 +1042,11 @@
               "type" : "string"
             },
             "insert_request_via_str" : {
-              "description" : "proxy.config.http.insert_request_via_str: 3",
+              "description" : "proxy.config.http.insert_request_via_str: 1",
               "type" : "integer"
             },
             "insert_response_via_str" : {
-              "description" : "proxy.config.http.insert_response_via_str: 3",
+              "description" : "proxy.config.http.insert_response_via_str: 0",
               "type" : "integer"
             },
             "insert_squid_x_forwarded_for" : {
@@ -1141,7 +1141,7 @@
                   "type" : "integer"
                 },
                 "fail_threshold" : {
-                  "description" : "proxy.config.http.parent_proxy.fail_threshold: 3",
+                  "description" : "proxy.config.http.parent_proxy.fail_threshold: 10",
                   "type" : "integer"
                 },
                 "file" : {
@@ -1157,7 +1157,7 @@
                   "type" : "integer"
                 },
                 "retry_time" : {
-                  "description" : "proxy.config.http.parent_proxy.retry_time: 10",
+                  "description" : "proxy.config.http.parent_proxy.retry_time: 300",
                   "type" : "integer"
                 },
                 "self_detect" : {
@@ -2545,7 +2545,7 @@
                       "additionalProperties" : false,
                       "properties" : {
                         "policy" : {
-                          "description" : "proxy.config.ssl.client.verify.server.policy: PERMISSIVE",
+                          "description" : "proxy.config.ssl.client.verify.server.policy: ENFORCED",
                           "type" : "string"
                         },
                         "properties" : {
@@ -2996,7 +2996,7 @@
               "type" : "integer"
             },
             "remap_required" : {
-              "description" : "proxy.config.url_remap.remap_required: 0",
+              "description" : "proxy.config.url_remap.remap_required: 1",
               "type" : "integer"
             },
             "strategies" : {
