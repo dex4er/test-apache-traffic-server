@@ -1,6 +1,14 @@
 # yaml-language-server: $schema=./records.schema.json
 
 records:
+  cache:
+    # Maximum size of the in-process RAM cache.
+    # Default: -1 (auto ≈ 10% of available RAM). Set explicitly to avoid ATS
+    # claiming excessive memory on top of the disk cache. 64Mi = 67108864 bytes.
+
+    ram_cache:
+      size: 67108864
+
   diags:
     debug:
       # Prefix-matched tags that enable debug logging output.
@@ -71,26 +79,11 @@ records:
 
       max_stale_age: 300
 
-      # Serve a stale cached object when origin is unreachable, times out, or
-      # returns a 5xx error, instead of forwarding the error to L1.
-      # Default: 0 (disabled) — enabled so L2 disk cache covers backend outages.
+    # Serve a stale cached object when origin is unreachable, times out, or
+    # returns a 5xx error, instead of forwarding the error to L1.
+    # Default: 0 (disabled) — enabled so L2 disk cache covers backend outages.
 
-      negative_revalidating_enabled: 1
-
-      # Window (seconds) in which a stale object may be served while ATS
-      # revalidates in the background (stale-while-revalidate). Applies to
-      # responses without an explicit stale-while-revalidate directive.
-      # Default: 0 (disabled) — set to 60 so expired objects are served
-      # immediately and the background fetch runs asynchronously.
-
-      stale_while_revalidate_default_seconds: 60
-
-      # Maximum size of the in-process RAM cache.
-      # Default: -1 (auto ≈ 10% of available RAM). Set explicitly to avoid ATS
-      # claiming excessive memory on top of the disk cache. 64Mi = 67108864 bytes.
-
-      ram_cache:
-        size: 67108864
+    negative_revalidating_enabled: 1
 
   ssl:
     client:

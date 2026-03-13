@@ -1,6 +1,15 @@
 # yaml-language-server: $schema=./records.schema.json
 
 records:
+  cache:
+    # Maximum size of the in-process RAM cache.
+    # Default: -1 (auto ≈ 10% of available RAM). Set explicitly because L1
+    # already uses 128Mi tmpfs for disk cache — without a cap ATS would claim
+    # an additional ~10% of pod RAM on top of that. 64Mi = 67108864 bytes.
+
+    ram_cache:
+      size: 67108864
+
   diags:
     debug:
       # Prefix-matched tags that enable debug logging output.
@@ -50,26 +59,6 @@ records:
 
       max_stale_age: 300
 
-      # Maximum size of the in-process RAM cache.
-      # Default: -1 (auto ≈ 10% of available RAM). Set explicitly because L1
-      # already uses 128Mi tmpfs for disk cache — without a cap ATS would claim
-      # an additional ~10% of pod RAM on top of that. 64Mi = 67108864 bytes.
-
-      ram_cache:
-        size: 67108864
-
-      # Serve a stale cached object when upstream (L2) is unreachable or returns
-      # a 5xx error, instead of forwarding the error to the client.
-      # Default: 0 (disabled) — enabled so L1 RAM cache covers L2 downtime.
-
-      negative_revalidating_enabled: 1
-
-      # Maximum age (seconds) of a stale object that may be served under
-      # negative_revalidating_enabled. Applies on top of max_stale_age.
-      # Default: 1800 — kept at default.
-
-      negative_revalidating_lifetime: 1800
-
     parent_proxy:
       # Seconds before a parent marked "down" is retried after connection failures.
       # Default: 300 — lowered to 10 so L1 recovers quickly after L2 restarts.
@@ -81,6 +70,18 @@ records:
       # sending new requests to it sooner, relying on the RAM cache instead.
 
       fail_threshold: 3
+
+    # Serve a stale cached object when upstream (L2) is unreachable or returns
+    # a 5xx error, instead of forwarding the error to the client.
+    # Default: 0 (disabled) — enabled so L1 RAM cache covers L2 downtime.
+
+    negative_revalidating_enabled: 1
+
+    # Maximum age (seconds) of a stale object that may be served under
+    # negative_revalidating_enabled. Applies on top of max_stale_age.
+    # Default: 1800 — kept at default.
+
+    negative_revalidating_lifetime: 1800
 
   ssl:
     client:
