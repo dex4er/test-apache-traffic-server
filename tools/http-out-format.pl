@@ -15,5 +15,5 @@ $date =~ s/\r//g;
 $body =~ s/\n/ /g;
 $body =~ s/\s+$//;
 
-my $localtime = localtime();
-print "$localtime | $code | $date | $body | $xcache\n";
+my $gmtime = gmtime();
+print "$gmtime | $code | $date | $body | $xcache\n";
